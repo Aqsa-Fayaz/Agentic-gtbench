@@ -1,0 +1,48 @@
+# Environment
+.env
+venv/
+.venv/
+env/
+ENV/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+*.so
+
+# Results (generated outputs — too large for git)
+results/*.json
+results/*.csv
+results/*.html
+results/*.png
+logs/
+
+# Keep gitkeep markers
+!results/.gitkeep
+!logs/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Coverage
+.coverage
+htmlcov/
+.pytest_cache/

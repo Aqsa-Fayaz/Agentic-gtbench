@@ -1,0 +1,42 @@
+# -----------------------------------------------------------------------------
+# Experiment 2 — Model Family Comparison
+# -----------------------------------------------------------------------------
+# Holds the reasoning strategy constant (CoT) and varies the underlying LLM
+# across matchups. Tests whether larger / code-pretrained models exhibit
+# stronger strategic reasoning. Llama-3 is served via Groq's
+# OpenAI-compatible endpoint; set provider: groq on that agent side.
+# -----------------------------------------------------------------------------
+
+experiment_name: "Model Comparison"
+strategy: cot
+temperature: 0.3
+
+games:
+  - tictactoe
+  - prisoners_dilemma
+  - kuhn_poker
+
+rounds_per_matchup: 15
+
+matchups:
+  - player_a_model: gpt-4o
+    player_a_provider: openai
+    player_b_model: gpt-3.5-turbo
+    player_b_provider: openai
+
+  - player_a_model: gpt-4o
+    player_a_provider: openai
+    player_b_model: llama-3-8b-8192
+    player_b_provider: groq
+
+  - player_a_model: gpt-3.5-turbo
+    player_a_provider: openai
+    player_b_model: llama-3-8b-8192
+    player_b_provider: groq
+
+output_formats:
+  - json
+  - csv
+  - html
+
+include_llm_summary: true

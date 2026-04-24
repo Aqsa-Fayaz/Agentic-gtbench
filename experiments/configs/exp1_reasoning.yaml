@@ -1,0 +1,42 @@
+# -----------------------------------------------------------------------------
+# Experiment 1 — Reasoning Strategy Comparison
+# -----------------------------------------------------------------------------
+# Compares the four reasoning strategies (direct, CoT, ToT, ReAct)
+# head-to-head across all five game environments. A single model family
+# (gpt-4o-mini) is used on both sides so the measured differences are
+# attributable to the reasoning strategy, not the underlying LLM.
+# -----------------------------------------------------------------------------
+
+experiment_name: "Strategy Comparison"
+model: "gpt-4o-mini"
+temperature: 0.3
+
+games:
+  - tictactoe
+  - connect4
+  - nim
+  - prisoners_dilemma
+  - kuhn_poker
+
+rounds_per_matchup: 20
+
+matchups:
+  - player_a_strategy: direct
+    player_b_strategy: cot
+  - player_a_strategy: cot
+    player_b_strategy: tot
+  - player_a_strategy: tot
+    player_b_strategy: react
+  - player_a_strategy: direct
+    player_b_strategy: react
+  - player_a_strategy: cot
+    player_b_strategy: react
+  - player_a_strategy: direct
+    player_b_strategy: tot
+
+output_formats:
+  - json
+  - csv
+  - html
+
+include_llm_summary: true
