@@ -52,10 +52,9 @@ class EvaluatorAgent(BaseAgent):
     @property
     def llm(self) -> ChatOpenAI:
         if self._llm is None:
-            self._llm = ChatOpenAI(
+            self._llm = settings.build_chat_openai_client(
                 model=self.model,
                 temperature=self.temperature,
-                api_key=settings.openai_api_key,
             )
         return self._llm
 
@@ -79,8 +78,8 @@ class EvaluatorAgent(BaseAgent):
         """Ask the LLM for a brief analytical summary of the current metrics."""
         if report is None:
             report = self.full_report()
-        if not settings.openai_api_key:
-            return "[qualitative summary unavailable — OPENAI_API_KEY not set]"
+        if not settings.has_llm_credentials():
+            return "[qualitative summary unavailable — set OPENAI_API_KEY or OPENROUTER_API_KEY]"
         try:
             import json
 

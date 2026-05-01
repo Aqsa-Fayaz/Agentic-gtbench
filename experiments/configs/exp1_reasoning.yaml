@@ -5,6 +5,10 @@
 # head-to-head across all five game environments. A single model family
 # (gpt-4o-mini) is used on both sides so the measured differences are
 # attributable to the reasoning strategy, not the underlying LLM.
+#
+# OpenRouter-only: leave OPENAI_API_KEY empty and set OPENROUTER_API_KEY.
+# Bare names like gpt-4o-mini are auto-prefixed to openai/gpt-4o-mini.
+# Or set model: "openai/gpt-4o-mini" explicitly.
 # -----------------------------------------------------------------------------
 
 experiment_name: "Strategy Comparison"

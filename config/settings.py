@@ -21,6 +21,7 @@ class Settings(BaseSettings):
 
     openai_api_key: str = Field(default="", alias="OPENAI_API_KEY")
     groq_api_key: str = Field(default="", alias="GROQ_API_KEY")
+    openrouter_api_key: str = Field(default="", alias="OPENROUTER_API_KEY")
     anthropic_api_key: str = Field(default="", alias="ANTHROPIC_API_KEY")
 
     default_model: str = Field(default="gpt-4o-mini", alias="DEFAULT_MODEL")
@@ -58,6 +59,45 @@ class Settings(BaseSettings):
             "api_key": self.groq_api_key,
             "base_url": "https://api.groq.com/openai/v1",
         }
+
+    def get_openrouter_client_kwargs(self, model: str, temperature: float = None) -> dict:
+        return {
+            "model": model,
+            "temperature": self.default_temperature if temperature is None else temperature,
+            "api_key": self.openrouter_api_key,
+            "base_url": "https://openrouter.ai/api/v1",
+        }
+
+    def has_llm_credentials(self) -> bool:
+        """True if direct OpenAI and/or OpenRouter key is configured."""
+        return bool((self.openai_api_key or "").strip() or (self.openrouter_api_key or "").strip())
+
+    def build_chat_openai_client(self, *, model: str, temperature: float):
+        """
+        ChatOpenAI for auxiliary agents (orchestrator / evaluator) and for
+        PlayerAgent when provider is ``openai``.
+
+        If only ``OPENROUTER_API_KEY`` is set, calls are sent to OpenRouter;
+        bare model names (no ``/``) are prefixed with ``openai/`` so they
+        resolve on OpenRouter.
+        """
+        from langchain_openai import ChatOpenAI
+
+        t = self.default_temperature if temperature is None else temperature
+        if (self.openai_api_key or "").strip():
+            return ChatOpenAI(model=model, temperature=t, api_key=self.openai_api_key)
+        if (self.openrouter_api_key or "").strip():
+            routed = model if "/" in model else f"openai/{model}"
+            kwargs = self.get_openrouter_client_kwargs(model=routed, temperature=t)
+            return ChatOpenAI(
+                model=kwargs["model"],
+                temperature=kwargs["temperature"],
+                api_key=kwargs["api_key"],
+                base_url=kwargs["base_url"],
+            )
+        raise ValueError(
+            "Set OPENAI_API_KEY (direct OpenAI) or OPENROUTER_API_KEY (OpenRouter)."
+        )
 
 
 settings = Settings()

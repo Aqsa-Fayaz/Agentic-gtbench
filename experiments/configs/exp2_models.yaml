@@ -1,10 +1,9 @@
 # -----------------------------------------------------------------------------
-# Experiment 2 — Model Family Comparison
+# Experiment 2 — Model Family Comparison (all via OpenRouter)
 # -----------------------------------------------------------------------------
-# Holds the reasoning strategy constant (CoT) and varies the underlying LLM
-# across matchups. Tests whether larger / code-pretrained models exhibit
-# stronger strategic reasoning. Llama-3 is served via Groq's
-# OpenAI-compatible endpoint; set provider: groq on that agent side.
+# OpenRouter uses one API key and OpenAI-compatible base URL; model ids are
+# provider-prefixed slugs (e.g. openai/gpt-4o, meta-llama/llama-3-8b-instruct).
+# Set OPENROUTER_API_KEY in .env and use provider: openrouter for every player.
 # -----------------------------------------------------------------------------
 
 experiment_name: "Model Comparison"
@@ -19,20 +18,20 @@ games:
 rounds_per_matchup: 15
 
 matchups:
-  - player_a_model: gpt-4o
-    player_a_provider: openai
-    player_b_model: gpt-3.5-turbo
-    player_b_provider: openai
+  - player_a_model: openai/gpt-4o
+    player_a_provider: openrouter
+    player_b_model: openai/gpt-3.5-turbo
+    player_b_provider: openrouter
 
-  - player_a_model: gpt-4o
-    player_a_provider: openai
-    player_b_model: llama-3-8b-8192
-    player_b_provider: groq
+  - player_a_model: openai/gpt-4o
+    player_a_provider: openrouter
+    player_b_model: meta-llama/llama-3-8b-instruct
+    player_b_provider: openrouter
 
-  - player_a_model: gpt-3.5-turbo
-    player_a_provider: openai
-    player_b_model: llama-3-8b-8192
-    player_b_provider: groq
+  - player_a_model: openai/gpt-3.5-turbo
+    player_a_provider: openrouter
+    player_b_model: meta-llama/llama-3-8b-instruct
+    player_b_provider: openrouter
 
 output_formats:
   - json

@@ -79,10 +79,25 @@ class PlayerAgent(BaseAgent):
                 api_key=kwargs["api_key"],
                 base_url=kwargs["base_url"],
             )
-        return ChatOpenAI(
+        if self.provider == "openrouter":
+            kwargs = settings.get_openrouter_client_kwargs(
+                model=self.model,
+                temperature=self.temperature,
+            )
+            return ChatOpenAI(
+                model=kwargs["model"],
+                temperature=kwargs["temperature"],
+                api_key=kwargs["api_key"],
+                base_url=kwargs["base_url"],
+            )
+        if self.provider != "openai":
+            raise ValueError(
+                f"Unsupported provider '{self.provider}'. "
+                "Choose from: openai, groq, openrouter."
+            )
+        return settings.build_chat_openai_client(
             model=self.model,
             temperature=self.temperature,
-            api_key=settings.openai_api_key,
         )
 
     @property

@@ -52,8 +52,10 @@ agentic-gtbench/
 ├── experiments/
 │   ├── run_experiments.py      # Main experiment runner
 │   └── configs/
-│       ├── exp1_reasoning.yaml # Strategy comparison experiment
-│       └── exp2_models.yaml    # Model family comparison
+│       ├── exp1_reasoning.yaml   # Strategy comparison (same model, vary strategy)
+│       ├── exp2_models.yaml      # Model comparison via OpenRouter slugs
+│       ├── exp3_gemma_openrouter.yaml  # Gemma 12B vs Gemma 3n (OpenRouter)
+│       └── exp4_gemma_12b_vs_27b.yaml # Gemma 12B vs 27B head-to-head
 ├── config/
 │   └── settings.py             # Central config & env loading
 ├── tests/
@@ -183,13 +185,13 @@ stateDiagram-v2
 
 ### Prerequisites
 - Python 3.10+
-- OpenAI API key (or Anthropic / Groq for open models)
+- OpenRouter API key (recommended: one key for OpenAI-, Meta-, and Google-routed models), or direct OpenAI / Groq keys if you use those providers in configs
 - Git
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/agentic-gtbench.git
-cd agentic-gtbench
+git clone https://github.com/Aqsa-Fayaz/Agentic-gtbench.git
+cd Agentic-gtbench
 ```
 
 ### 2. Create Virtual Environment
@@ -220,9 +222,27 @@ python -m pytest tests/ -v
 # Strategy comparison experiment
 python experiments/run_experiments.py --config experiments/configs/exp1_reasoning.yaml
 
-# Model comparison experiment  
+# Model comparison (OpenRouter model IDs, e.g. openai/gpt-4o, meta-llama/...)
 python experiments/run_experiments.py --config experiments/configs/exp2_models.yaml
+
+# Gemma on OpenRouter (example matchup)
+python experiments/run_experiments.py --config experiments/configs/exp3_gemma_openrouter.yaml
+
+# Gemma 12B vs 27B (poster baseline)
+python experiments/run_experiments.py --config experiments/configs/exp4_gemma_12b_vs_27b.yaml
 ```
+
+Outputs are written under `results/<ExperimentName>_<timestamp>/` as `report.json`, `sessions.csv`, and `report.html`. View the HTML locally:
+
+```bash
+cd results/<your_run_folder>
+python -m http.server 8000
+# open http://127.0.0.1:8000/report.html
+```
+
+**LangGraph:** the runner sets a higher `recursion_limit` on `graph.invoke()` so long games (e.g. iterated Prisoner’s Dilemma) complete without hitting the default step cap.
+
+**Metrics note:** `report.json` includes win-rate aggregates keyed by **strategy name**. For **model vs model** runs where both players use the same strategy (e.g. both `cot`), compute win rates from **`sessions.csv`** using `winner` and `player_a_id` / `player_b_id` so each model is credited correctly.
 
 ---
 
@@ -249,10 +269,14 @@ python experiments/run_experiments.py --config experiments/configs/exp2_models.y
 - **Hypothesis**: CoT/ToT improve in probabilistic games; may hurt in deterministic
 
 ### Experiment 2: Model Family Comparison
-- **Agents**: GPT-4o vs GPT-3.5-turbo vs Llama-3 (via Groq)
+- **Agents**: e.g. `openai/gpt-4o` vs `openai/gpt-3.5-turbo` vs `meta-llama/llama-3-8b-instruct` (all via **OpenRouter**; set `provider: openrouter` in the YAML)
 - **Strategy**: CoT for all
-- **Games**: Tic-Tac-Toe, Connect-4, Prisoner's Dilemma
-- **Hypothesis**: Code-pretrained models outperform in deterministic games
+- **Games**: Tic-Tac-Toe, Prisoner's Dilemma, Kuhn Poker (see `exp2_models.yaml`)
+- **Hypothesis**: Larger / stronger models gain more in payoff-driven and incomplete-information games
+
+### Experiment 3 & 4: Gemma (OpenRouter)
+- **exp3:** `google/gemma-3-12b-it` vs `google/gemma-3n-e2b-it:free` (free-tier models may hit provider rate limits or API constraints)
+- **exp4:** `google/gemma-3-12b-it` vs `google/gemma-3-27b-it` — fixed CoT, 5 rounds × 3 games (15 sessions) in the default config
 
 ---
 
@@ -263,7 +287,7 @@ python experiments/run_experiments.py --config experiments/configs/exp2_models.y
 - [x] **Tool usage** — 4 custom tools (validator, tracker, analyzer, history)
 - [x] **Multi-agent coordination** — LangGraph orchestration with message passing
 - [x] **Dynamic/unpredictable operation** — Opponent adapts based on history
-- [x] **Research & Experimentation** — 2 controlled experiments with metrics
+- [x] **Research & Experimentation** — Multiple YAML experiment configs with automated metrics export
 - [x] **Ethics discussion** — See paper section IX
 
 ---
