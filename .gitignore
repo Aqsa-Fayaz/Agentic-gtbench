@@ -46,3 +46,10 @@ Thumbs.db
 .coverage
 htmlcov/
 .pytest_cache/
+
+GTbecnh.pdf
+agentic_gtbench_poster.html
+PROJECT_CONTEXT.md
+results.zip
+RESULTS_REPORT.md
+RESULTS_REPORT.html

@@ -133,6 +133,32 @@ class KuhnPoker(BaseGame):
             lines.append(f"Winner: {self._winner} (showdown={self._showdown})")
         return "\n".join(lines)
 
+    @classmethod
+    def from_state(cls, state: dict) -> "KuhnPoker":
+        """
+        Restore from a state dict. Note: a state taken from
+        get_state_for_player() hides the opponent's card; the reconstructed
+        game won't be able to do showdown logic correctly until a state
+        from get_state() (with both cards) is provided. For move-validation
+        purposes (which only needs current_player + action_history), this is
+        sufficient.
+        """
+        game = cls()
+        game.action_history = list(state.get("action_history", []))
+        game.turn_number = state.get("turn_number", len(game.action_history))
+        game.pot = state.get("pot", 2)
+        game._terminal = state.get("terminal", False)
+        game._winner = state.get("winner")
+        game._showdown = state.get("showdown", False)
+        game._folded_by = state.get("folded_by")
+        # Cards: prefer my_card / opponent_card if present, else keep dealt cards.
+        if "my_card" in state and "opponent_card" in state:
+            # We don't know which player this state was taken from without
+            # more info — leave the dealt cards in place and let validation
+            # work from action_history.
+            pass
+        return game
+
     def _resolve_if_terminal(self, mover: str, action: str) -> None:
         """
         Inspect action history and decide if the hand has ended.

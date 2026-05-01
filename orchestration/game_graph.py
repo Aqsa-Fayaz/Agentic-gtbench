@@ -26,6 +26,7 @@ logger = logging.getLogger(__name__)
 class GameSessionState(TypedDict):
     session_id: str
     game_name: str
+    game_kwargs: dict                  # Constructor args for load_game (e.g. num_rounds)
     game: Any                          # BaseGame instance (not serialized)
     player_a: Any                      # PlayerAgent instance
     player_b: Any                      # PlayerAgent instance
@@ -48,9 +49,13 @@ class GameSessionState(TypedDict):
 
 def node_init_session(state: GameSessionState) -> GameSessionState:
     """Initialize a new game session."""
-    game = load_game(state["game_name"])
+    game_kwargs = state.get("game_kwargs") or {}
+    game = load_game(state["game_name"], **game_kwargs)
     game.reset()
-    logger.info(f"[{state['session_id']}] Game '{state['game_name']}' initialized.")
+    logger.info(
+        f"[{state['session_id']}] Game '{state['game_name']}' initialized "
+        f"(kwargs={game_kwargs})."
+    )
     return {
         **state,
         "game": game,
@@ -170,6 +175,7 @@ def node_record_result(state: GameSessionState) -> GameSessionState:
     result = {
         "session_id": state["session_id"],
         "game_name": state["game_name"],
+        "game_kwargs": state.get("game_kwargs", {}),
         "player_a_id": state["player_a"].agent_id,
         "player_b_id": state["player_b"].agent_id,
         "player_a_strategy": getattr(state["player_a"], "strategy_name", "unknown"),
@@ -195,6 +201,8 @@ def node_record_result(state: GameSessionState) -> GameSessionState:
         actions_b = [r["player_b_action"] for r in game.round_history]
         result["extra"]["player_a_actions"] = actions_a
         result["extra"]["player_b_actions"] = actions_b
+    if hasattr(game, "cumulative_payoffs"):
+        result["extra"]["cumulative_payoffs"] = dict(game.cumulative_payoffs)
 
     return {**state, "session_meta": {**meta, "result": result}}
 
@@ -300,11 +308,13 @@ def create_initial_state(
     player_b,
     evaluator,
     session_meta: dict = None,
+    game_kwargs: dict = None,
 ) -> GameSessionState:
     """Helper to build initial state for a session."""
     return GameSessionState(
         session_id=str(uuid.uuid4())[:8],
         game_name=game_name,
+        game_kwargs=game_kwargs or {},
         game=None,                    # Set by init_session node
         player_a=player_a,
         player_b=player_b,

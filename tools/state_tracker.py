@@ -97,6 +97,54 @@ class StateTrackerTool(BaseTool):
                 f"Kuhn Poker. Your card: {state.get('my_card')}. Pot: {state.get('pot')}. "
                 f"Actions so far: {state.get('action_history', [])}."
             )
+        if game_name == "pig":
+            return (
+                f"Pig (push-your-luck), target {state.get('target_score', 100)}. "
+                f"You are {player}. Scores: {state.get('scores')}. "
+                f"Current turn_total: {state.get('turn_total', 0)}. "
+                f"Last roll: {state.get('last_roll')}. "
+                "Choose 'roll' (gain die value, but a 1 wipes your turn) "
+                "or 'hold' (bank turn_total, opponent moves)."
+            )
+        if game_name == "blind_auction":
+            return (
+                f"Blind Auction. You are {player}. Your private valuation: "
+                f"{state.get('my_valuation')}. Max bid: {state.get('max_bid')}. "
+                "Bids are simultaneous and sealed; opponent's bid is hidden. "
+                "Higher bid wins and pays own bid; payoff = valuation − bid."
+            )
+        if game_name == "liars_dice":
+            return (
+                f"Liar's Dice. You are {player}. Your dice: {state.get('my_dice')}. "
+                f"Dice per player: {state.get('dice_per_player')}. "
+                f"Bid history: {state.get('bid_history')}. "
+                "Each new bid must strictly raise the previous (higher face, "
+                "or same face with higher count). 'call' challenges the last "
+                "bid: count actual dice across both hands at that face; bidder "
+                "wins if count met, else caller wins."
+            )
+        if game_name == "breakthrough":
+            board = state.get("board", [])
+            grid = "\n".join(" ".join(r) for r in board)
+            forward = "DOWN (toward row 5)" if player == "player_a" else "UP (toward row 0)"
+            return (
+                f"Breakthrough 6x6, turn {state.get('turn_number', 0)}. You are "
+                f"{player} (symbol {'A' if player == 'player_a' else 'B'}); "
+                f"you advance {forward}. Move ONE piece one square forward "
+                "straight (empty only) or one diagonal (empty or capture). "
+                "Win by reaching the opponent's back row, or by leaving them "
+                f"with no legal moves.\nBoard:\n{grid}"
+            )
+        if game_name == "negotiation":
+            return (
+                f"Negotiation, turn {state.get('turn_number', 0)}/"
+                f"{state.get('max_turns', '?')}. You are {player}. "
+                f"Pool: {state.get('pool')}. Your private valuations: "
+                f"{state.get('my_valuations')}. Proposal history: "
+                f"{state.get('proposal_history')}. Actions: 'propose' a split "
+                "(for_me dict), 'accept' opponent's last proposal, or "
+                "'walk_away' (both get 0)."
+            )
         return f"{game_name} state: {json.dumps(state, default=str)[:300]}"
 
     @staticmethod

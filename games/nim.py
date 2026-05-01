@@ -100,6 +100,17 @@ class Nim(BaseGame):
                 moves.append({"pile": idx, "count": count})
         return moves
 
+    @classmethod
+    def from_state(cls, state: dict) -> "Nim":
+        piles = state.get("piles") or list(cls.DEFAULT_PILES)
+        game = cls(piles=piles)
+        # Reset already used the supplied piles, but turn_number is what
+        # determines current_player — restore it from the state dict.
+        game.turn_number = state.get("turn_number", 0)
+        game._winner = state.get("winner")
+        game._last_move = state.get("last_move")
+        return game
+
     def render(self) -> str:
         lines = [f"=== Nim (Misère) — Turn {self.turn_number} ==="]
         for idx, size in enumerate(self.piles):

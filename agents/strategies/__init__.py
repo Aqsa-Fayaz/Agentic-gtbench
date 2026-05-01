@@ -7,15 +7,17 @@ function that performs the LLM call(s) and returns a move dict.
 Strategies:
     direct  — single zero-shot LLM call
     cot     — single LLM call with chain-of-thought scaffolding
+    sc_cot  — N sampled CoT trajectories, majority-vote
     tot     — three sequential calls: generate → evaluate → select
     react   — Thought / Action / Observation loop with tool use
 """
 
-from agents.strategies import direct, cot, tot, react
+from agents.strategies import direct, cot, sc_cot, tot, react
 
 STRATEGY_REGISTRY = {
     "direct": direct,
     "cot": cot,
+    "sc_cot": sc_cot,
     "tot": tot,
     "react": react,
 }
@@ -31,4 +33,4 @@ def load_strategy(name: str):
     return STRATEGY_REGISTRY[key]
 
 
-__all__ = ["STRATEGY_REGISTRY", "load_strategy", "direct", "cot", "tot", "react"]
+__all__ = ["STRATEGY_REGISTRY", "load_strategy", "direct", "cot", "sc_cot", "tot", "react"]

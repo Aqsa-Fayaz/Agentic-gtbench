@@ -14,6 +14,11 @@ from evaluation.reporter import Reporter
 
 
 def _mk_session(**overrides) -> dict:
+    """
+    Build a session dict that mirrors what game_graph.node_record_result emits:
+    `winner` is the role label ("player_a" / "player_b" / "draw"), NOT the
+    agent_id. The metrics engine joins to agent_ids via the per-role fields.
+    """
     base = {
         "session_id": "s1",
         "game_name": "tictactoe",
@@ -21,7 +26,7 @@ def _mk_session(**overrides) -> dict:
         "player_b_id": "B",
         "player_a_strategy": "direct",
         "player_b_strategy": "cot",
-        "winner": "A",
+        "winner": "player_a",
         "turns": 5,
         "invalid_moves_a": 0,
         "invalid_moves_b": 1,
@@ -38,7 +43,7 @@ class TestMetricsEngine:
     def test_record_and_report(self):
         engine = MetricsEngine()
         engine.record_session(_mk_session())
-        engine.record_session(_mk_session(session_id="s2", winner="B"))
+        engine.record_session(_mk_session(session_id="s2", winner="player_b"))
         engine.record_session(_mk_session(session_id="s3", winner="draw"))
 
         report = engine.full_report()
@@ -68,7 +73,7 @@ class TestMetricsEngine:
             game_name="prisoners_dilemma",
             player_a_strategy="tit_for_tat",
             player_b_strategy="always_defect",
-            winner="B",
+            winner="player_b",
             extra={
                 "player_a_actions": ["cooperate", "cooperate", "defect"],
                 "player_b_actions": ["defect", "defect", "defect"],

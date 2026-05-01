@@ -1,0 +1,27 @@
+# -----------------------------------------------------------------------------
+# Smoke Test — minimal end-to-end LangGraph run
+# -----------------------------------------------------------------------------
+# Goal: prove the pipeline works against the live Groq endpoint with the
+# smallest possible call budget (~10 LLM calls).
+# Only Direct strategy, only TicTacToe, only 1 round.
+# Used as the gating test before running the larger Phase 2 experiment.
+# -----------------------------------------------------------------------------
+
+experiment_name: "Smoke Test"
+provider: groq                  # falls back to settings.default_provider if omitted
+temperature: 0.2                # paper §4 spec
+
+games:
+  - tictactoe
+
+rounds_per_matchup: 1
+
+matchups:
+  - player_a_strategy: direct
+    player_b_strategy: direct
+
+output_formats:
+  - json
+  - html
+
+include_llm_summary: false      # do NOT spend extra calls on post-mortems

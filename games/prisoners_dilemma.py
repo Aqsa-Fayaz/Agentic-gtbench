@@ -138,6 +138,21 @@ class PrisonersDilemma(BaseGame):
                 )
         return "\n".join(lines)
 
+    @classmethod
+    def from_state(cls, state: dict) -> "PrisonersDilemma":
+        num_rounds = state.get("num_rounds", 10)
+        game = cls(num_rounds=num_rounds)
+        game.turn_number = state.get("turn_number", 0)
+        game.current_round = state.get("current_round", 1)
+        game.round_history = list(state.get("round_history", []))
+        game.cumulative_payoffs = dict(
+            state.get("cumulative_payoffs", {cls.PLAYER_A: 0, cls.PLAYER_B: 0})
+        )
+        game._pending_a_action = state.get("pending_a_action")
+        if game.current_round > game.num_rounds:
+            game._winner = game._determine_winner()
+        return game
+
     def _determine_winner(self) -> str:
         pa = self.cumulative_payoffs[self.PLAYER_A]
         pb = self.cumulative_payoffs[self.PLAYER_B]

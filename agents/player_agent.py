@@ -40,7 +40,7 @@ class PlayerAgent(BaseAgent):
         - move_history (per-game audit trail with timestamps)
     """
 
-    SUPPORTED_STRATEGIES = ("direct", "cot", "tot", "react")
+    SUPPORTED_STRATEGIES = ("direct", "cot", "sc_cot", "tot", "react")
 
     def __init__(
         self,
@@ -49,9 +49,12 @@ class PlayerAgent(BaseAgent):
         model: str = None,
         temperature: float = None,
         tools: list = None,
-        provider: str = "openai",
+        provider: str = None,
     ):
-        super().__init__(agent_id=agent_id, model=model, temperature=temperature)
+        # Resolve provider before BaseAgent so model defaulting picks the right family.
+        self.provider = (provider or settings.default_provider).lower()
+        resolved_model = settings.resolve_model(self.provider, model)
+        super().__init__(agent_id=agent_id, model=resolved_model, temperature=temperature)
         self.strategy_name = strategy.lower()
         if self.strategy_name not in self.SUPPORTED_STRATEGIES:
             raise ValueError(
@@ -60,7 +63,6 @@ class PlayerAgent(BaseAgent):
             )
         self.strategy = load_strategy(self.strategy_name)
         self.tools = tools or []
-        self.provider = provider.lower()
 
         self.invalid_move_count = 0
         self.total_moves = 0
@@ -76,13 +78,16 @@ class PlayerAgent(BaseAgent):
             return ChatOpenAI(
                 model=kwargs["model"],
                 temperature=kwargs["temperature"],
+                max_tokens=kwargs["max_tokens"],
                 api_key=kwargs["api_key"],
                 base_url=kwargs["base_url"],
             )
+        kwargs = settings.get_openai_client_kwargs(model=self.model, temperature=self.temperature)
         return ChatOpenAI(
-            model=self.model,
-            temperature=self.temperature,
-            api_key=settings.openai_api_key,
+            model=kwargs["model"],
+            temperature=kwargs["temperature"],
+            max_tokens=kwargs["max_tokens"],
+            api_key=kwargs["api_key"],
         )
 
     @property

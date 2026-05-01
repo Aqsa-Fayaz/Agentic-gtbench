@@ -19,10 +19,23 @@ import yaml
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from agents.evaluator_agent import EvaluatorAgent
+from agents.mcts_agent import MCTSAgent
 from agents.orchestrator_agent import OrchestratorAgent
 from agents.player_agent import PlayerAgent
+from agents.random_agent import RandomAgent
+from agents.tit_for_tat_agent import TitForTatAgent
 from config.settings import settings
 from orchestration.game_graph import build_game_graph, create_initial_state
+from tools.history_manager import HistoryManagerTool
+from tools.move_validator import MoveValidatorTool
+from tools.state_tracker import StateTrackerTool
+from tools.strategy_analyzer import StrategyAnalyzerTool
+
+CONVENTIONAL_AGENTS = {
+    "random": RandomAgent,
+    "tit_for_tat": TitForTatAgent,
+    "mcts": MCTSAgent,
+}
 
 logging.basicConfig(
     level=settings.log_level,
@@ -41,17 +54,42 @@ def _mk_player(
         f"player_{role}_strategy",
         config.get("strategy", "cot"),
     )
-    model = matchup.get(
-        f"player_{role}_model",
-        config.get("model", settings.default_model),
+
+    # Conventional (non-LLM) agents short-circuit the LLM provider plumbing.
+    if strategy in CONVENTIONAL_AGENTS:
+        cls = CONVENTIONAL_AGENTS[strategy]
+        # MCTS accepts a per-matchup simulation budget; default to paper's 1000.
+        if strategy == "mcts":
+            n_sims = matchup.get("mcts_simulations", config.get("mcts_simulations", 1000))
+            return cls(agent_id=f"{role.upper()}_{strategy}_{n_sims}", n_simulations=n_sims)
+        return cls(agent_id=f"{role.upper()}_{strategy}")
+
+    provider = matchup.get(
+        f"player_{role}_provider",
+        config.get("provider", settings.default_provider),
     )
-    provider = matchup.get(f"player_{role}_provider", "openai")
+    # Pick a sensible default model for the chosen provider when the YAML
+    # doesn't pin one explicitly.
+    fallback_model = settings.resolve_model(provider, config.get("model"))
+    model = matchup.get(f"player_{role}_model", fallback_model)
+    # ReAct is the only strategy that actually invokes tools inside its loop;
+    # other strategies ignore the bound list, so we only pay the import cost
+    # for ReAct matchups.
+    tools = []
+    if strategy.lower() == "react":
+        tools = [
+            MoveValidatorTool(),
+            StateTrackerTool(),
+            StrategyAnalyzerTool(),
+            HistoryManagerTool(),
+        ]
     return PlayerAgent(
         agent_id=f"{role.upper()}_{strategy}_{model}",
         strategy=strategy,
         model=model,
         temperature=config.get("temperature", settings.default_temperature),
         provider=provider,
+        tools=tools,
     )
 
 
@@ -71,12 +109,26 @@ def run_experiment(config: dict) -> dict:
     games = config.get("games", ["tictactoe"])
     rounds = config.get("rounds_per_matchup", 5)
     matchups = config.get("matchups", [])
+    # Per-game constructor kwargs, e.g. {"prisoners_dilemma": {"num_rounds": 5}}
+    game_kwargs_map: dict = config.get("game_kwargs", {}) or {}
 
-    total = len(matchups) * len(games) * rounds
+    # `games` may be either a flat list of names OR a list of dicts with
+    # inline kwargs: [{name: prisoners_dilemma, kwargs: {num_rounds: 5}}, ...]
+    normalized_games: list[tuple[str, dict]] = []
+    for entry in games:
+        if isinstance(entry, dict):
+            name = entry["name"]
+            kwargs = entry.get("kwargs", {})
+        else:
+            name = entry
+            kwargs = game_kwargs_map.get(name, {})
+        normalized_games.append((name, kwargs))
+
+    total = len(matchups) * len(normalized_games) * rounds
     completed = 0
 
     for matchup in matchups:
-        for game_name in games:
+        for game_name, game_kwargs in normalized_games:
             for round_n in range(rounds):
                 player_a = _mk_player("a", matchup, config)
                 player_b = _mk_player("b", matchup, config)
@@ -87,6 +139,7 @@ def run_experiment(config: dict) -> dict:
                     "round": round_n + 1,
                     "matchup": f"{player_a.strategy_name} vs {player_b.strategy_name}",
                     "assignment": assignment,
+                    "game_kwargs": game_kwargs,
                 }
 
                 initial_state = create_initial_state(
@@ -95,6 +148,7 @@ def run_experiment(config: dict) -> dict:
                     player_b=player_b,
                     evaluator=evaluator,
                     session_meta=meta,
+                    game_kwargs=game_kwargs,
                 )
                 initial_state["session_id"] = assignment["session_id"]
 

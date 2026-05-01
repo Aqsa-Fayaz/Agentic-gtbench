@@ -1,0 +1,33 @@
+# -----------------------------------------------------------------------------
+# New-Games Smoke — verify Pig, Blind Auction, Liar's Dice play end-to-end
+# -----------------------------------------------------------------------------
+# Tiny budget run: direct vs cot, 1 round per game, 3 games.
+# Pig uses target_score=20 (instead of 100) to stay short on call budget.
+# -----------------------------------------------------------------------------
+
+experiment_name: "New Games Smoke"
+provider: groq
+temperature: 0.2
+
+games:
+  - pig
+  - blind_auction
+  - liars_dice
+
+game_kwargs:
+  pig:
+    target_score: 20
+  liars_dice:
+    dice_per_player: 3
+
+rounds_per_matchup: 1
+
+matchups:
+  - player_a_strategy: direct
+    player_b_strategy: cot
+
+output_formats:
+  - json
+  - html
+
+include_llm_summary: false

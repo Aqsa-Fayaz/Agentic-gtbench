@@ -1,0 +1,149 @@
+{
+  "generated_at": "2026-05-01T11:12:14.285919+00:00",
+  "report": {
+    "total_sessions": 1,
+    "win_rates": {
+      "('react', 'tictactoe')": {
+        "strategy": "react",
+        "game": "tictactoe",
+        "games": 1,
+        "win_rate": 1.0,
+        "draw_rate": 0.0,
+        "loss_rate": 0.0
+      },
+      "('direct', 'tictactoe')": {
+        "strategy": "direct",
+        "game": "tictactoe",
+        "games": 1,
+        "win_rate": 0.0,
+        "draw_rate": 0.0,
+        "loss_rate": 1.0
+      }
+    },
+    "invalid_rates": {
+      "A_react_llama-3.1-8b-instant": {
+        "invalid_moves": 0,
+        "total_moves": 3,
+        "invalid_rate": 0.0
+      },
+      "B_direct_llama-3.1-8b-instant": {
+        "invalid_moves": 0,
+        "total_moves": 2,
+        "invalid_rate": 0.0
+      }
+    },
+    "elo_ratings": {
+      "A_react_llama-3.1-8b-instant": 1016.0,
+      "B_direct_llama-3.1-8b-instant": 984.0
+    },
+    "avg_turns": {
+      "('react', 'tictactoe')": {
+        "strategy": "react",
+        "game": "tictactoe",
+        "avg_turns": 5.0,
+        "min_turns": 5,
+        "max_turns": 5,
+        "samples": 1
+      }
+    },
+    "nra": {
+      "by_strategy": {
+        "react": {
+          "score_self": 1.0,
+          "score_opp": 0.0,
+          "n": 1,
+          "nra": 1.0
+        },
+        "direct": {
+          "score_self": 0.0,
+          "score_opp": 1.0,
+          "n": 1,
+          "nra": -1.0
+        }
+      },
+      "by_pair": {
+        "react vs direct": {
+          "score_self": 1.0,
+          "score_opp": 0.0,
+          "n": 1,
+          "nra": 1.0
+        },
+        "direct vs react": {
+          "score_self": 0.0,
+          "score_opp": 1.0,
+          "n": 1,
+          "nra": -1.0
+        }
+      }
+    },
+    "pareto_efficiency": {},
+    "cooperation_rates": {}
+  },
+  "sessions": [
+    {
+      "session_id": "sess_6daf152071",
+      "game_name": "tictactoe",
+      "game_kwargs": {},
+      "player_a_id": "A_react_llama-3.1-8b-instant",
+      "player_b_id": "B_direct_llama-3.1-8b-instant",
+      "player_a_strategy": "react",
+      "player_b_strategy": "direct",
+      "winner": "player_a",
+      "turns": 5,
+      "forfeited_by": null,
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 3,
+      "total_moves_b": 2,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "row": 0,
+            "col": 0
+          },
+          "valid": true
+        },
+        {
+          "turn": 2,
+          "player": "player_b",
+          "move": {
+            "row": 0,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 3,
+          "player": "player_a",
+          "move": {
+            "row": 2,
+            "col": 0
+          },
+          "valid": true
+        },
+        {
+          "turn": 4,
+          "player": "player_b",
+          "move": {
+            "row": 1,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 5,
+          "player": "player_a",
+          "move": {
+            "row": 1,
+            "col": 0
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [],
+      "extra": {}
+    }
+  ]
+}

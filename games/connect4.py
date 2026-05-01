@@ -96,6 +96,20 @@ class Connect4(BaseGame):
         rows = [f"  {' '.join(self.board[r])}" for r in range(self.ROWS)]
         return "\n".join([header] + rows)
 
+    @classmethod
+    def from_state(cls, state: dict) -> "Connect4":
+        game = cls()
+        board = state.get("board")
+        if board:
+            game.board = [list(row) for row in board]
+        filled = sum(
+            1 for r in range(cls.ROWS) for c in range(cls.COLS) if game.board[r][c] != cls.EMPTY
+        )
+        game.turn_number = state.get("turn_number", filled)
+        game._winner = state.get("winner")
+        game._last_move = state.get("last_move")
+        return game
+
     def _drop_row(self, col: int) -> int:
         for r in range(self.ROWS - 1, -1, -1):
             if self.board[r][col] == self.EMPTY:

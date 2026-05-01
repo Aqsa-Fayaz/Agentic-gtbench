@@ -31,9 +31,14 @@ class MoveValidatorTool(BaseTool):
 
     def _run(self, game_name: str, state: dict, player: str, move: dict) -> str:
         try:
-            game = load_game(game_name)
-            # Restore game state from dict (simplified: re-create and apply moves)
-            # For full state restoration, games should support from_state() classmethod
+            # Restore the game from the supplied state so that is_valid_move
+            # and get_legal_moves reflect the LIVE board, not an empty one.
+            game_cls = load_game(game_name).__class__
+            try:
+                game = game_cls.from_state(state)
+            except NotImplementedError:
+                # Fallback: use a fresh game (legacy behaviour). Logged.
+                game = load_game(game_name)
             valid, reason = game.is_valid_move(player, move)
             legal_moves = game.get_legal_moves(player)
             return json.dumps({

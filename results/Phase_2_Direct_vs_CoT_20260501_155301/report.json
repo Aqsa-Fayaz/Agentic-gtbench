@@ -1,0 +1,1037 @@
+{
+  "generated_at": "2026-05-01T11:37:17.545902+00:00",
+  "report": {
+    "total_sessions": 8,
+    "win_rates": {
+      "('direct', 'tictactoe')": {
+        "strategy": "direct",
+        "game": "tictactoe",
+        "games": 4,
+        "win_rate": 0.25,
+        "draw_rate": 0.0,
+        "loss_rate": 0.75
+      },
+      "('cot', 'tictactoe')": {
+        "strategy": "cot",
+        "game": "tictactoe",
+        "games": 4,
+        "win_rate": 0.75,
+        "draw_rate": 0.0,
+        "loss_rate": 0.25
+      },
+      "('direct', 'prisoners_dilemma')": {
+        "strategy": "direct",
+        "game": "prisoners_dilemma",
+        "games": 4,
+        "win_rate": 0.0,
+        "draw_rate": 0.5,
+        "loss_rate": 0.5
+      },
+      "('cot', 'prisoners_dilemma')": {
+        "strategy": "cot",
+        "game": "prisoners_dilemma",
+        "games": 4,
+        "win_rate": 0.5,
+        "draw_rate": 0.5,
+        "loss_rate": 0.0
+      }
+    },
+    "invalid_rates": {
+      "A_direct_llama-3.1-8b-instant": {
+        "invalid_moves": 0,
+        "total_moves": 18,
+        "invalid_rate": 0.0
+      },
+      "B_cot_llama-3.1-8b-instant": {
+        "invalid_moves": 0,
+        "total_moves": 17,
+        "invalid_rate": 0.0
+      },
+      "A_cot_llama-3.1-8b-instant": {
+        "invalid_moves": 0,
+        "total_moves": 20,
+        "invalid_rate": 0.0
+      },
+      "B_direct_llama-3.1-8b-instant": {
+        "invalid_moves": 0,
+        "total_moves": 18,
+        "invalid_rate": 0.0
+      }
+    },
+    "elo_ratings": {
+      "A_direct_llama-3.1-8b-instant": 986.6817325666809,
+      "B_cot_llama-3.1-8b-instant": 1013.3182674333191,
+      "A_cot_llama-3.1-8b-instant": 1041.2130416923687,
+      "B_direct_llama-3.1-8b-instant": 958.7869583076313
+    },
+    "avg_turns": {
+      "('cot', 'tictactoe')": {
+        "strategy": "cot",
+        "game": "tictactoe",
+        "avg_turns": 8.666666666666666,
+        "min_turns": 8,
+        "max_turns": 9,
+        "samples": 3
+      },
+      "('direct', 'tictactoe')": {
+        "strategy": "direct",
+        "game": "tictactoe",
+        "avg_turns": 7.0,
+        "min_turns": 7,
+        "max_turns": 7,
+        "samples": 1
+      },
+      "('cot', 'prisoners_dilemma')": {
+        "strategy": "cot",
+        "game": "prisoners_dilemma",
+        "avg_turns": 10.0,
+        "min_turns": 10,
+        "max_turns": 10,
+        "samples": 2
+      }
+    },
+    "nra": {
+      "by_strategy": {
+        "direct": {
+          "score_self": 2.0,
+          "score_opp": 6.0,
+          "n": 8,
+          "nra": -0.5
+        },
+        "cot": {
+          "score_self": 6.0,
+          "score_opp": 2.0,
+          "n": 8,
+          "nra": 0.5
+        }
+      },
+      "by_pair": {
+        "direct vs cot": {
+          "score_self": 2.0,
+          "score_opp": 6.0,
+          "n": 8,
+          "nra": -0.5
+        },
+        "cot vs direct": {
+          "score_self": 6.0,
+          "score_opp": 2.0,
+          "n": 8,
+          "nra": 0.5
+        }
+      }
+    },
+    "regret": {
+      "by_strategy_per_game": {
+        "direct on prisoners_dilemma": {
+          "n": 4,
+          "total_regret": 44.0,
+          "avg_regret": 11.0
+        },
+        "cot on prisoners_dilemma": {
+          "n": 4,
+          "total_regret": 52.0,
+          "avg_regret": 13.0
+        }
+      },
+      "by_strategy": {
+        "direct": {
+          "n": 4,
+          "total_regret": 44.0,
+          "avg_regret": 11.0
+        },
+        "cot": {
+          "n": 4,
+          "total_regret": 52.0,
+          "avg_regret": 13.0
+        }
+      }
+    },
+    "pareto_efficiency": {
+      "direct vs cot": {
+        "avg_pareto": 0.6166666666666667,
+        "samples": 2
+      },
+      "cot vs direct": {
+        "avg_pareto": 0.6166666666666667,
+        "samples": 2
+      }
+    },
+    "cooperation_rates": {
+      "direct": {
+        "cooperation_rate": 0.4,
+        "total_actions": 20
+      },
+      "cot": {
+        "cooperation_rate": 0.3,
+        "total_actions": 20
+      }
+    },
+    "error_profile": {
+      "direct": {
+        "misinterpretation": 0,
+        "factual_error": 0,
+        "overconfidence": 12,
+        "calculation_mistake": 0,
+        "endgame_misdetection": 5,
+        "ok": 5,
+        "total": 22,
+        "misinterpretation_pct": 0.0,
+        "factual_error_pct": 0.0,
+        "overconfidence_pct": 0.545,
+        "calculation_mistake_pct": 0.0,
+        "endgame_misdetection_pct": 0.227,
+        "ok_pct": 0.227
+      },
+      "cot": {
+        "misinterpretation": 0,
+        "factual_error": 0,
+        "overconfidence": 0,
+        "calculation_mistake": 0,
+        "endgame_misdetection": 2,
+        "ok": 1,
+        "total": 3,
+        "misinterpretation_pct": 0.0,
+        "factual_error_pct": 0.0,
+        "overconfidence_pct": 0.0,
+        "calculation_mistake_pct": 0.0,
+        "endgame_misdetection_pct": 0.667,
+        "ok_pct": 0.333
+      }
+    }
+  },
+  "sessions": [
+    {
+      "session_id": "sess_d16a7481f3",
+      "game_name": "tictactoe",
+      "player_a_id": "A_direct_llama-3.1-8b-instant",
+      "player_b_id": "B_cot_llama-3.1-8b-instant",
+      "player_a_strategy": "direct",
+      "player_b_strategy": "cot",
+      "winner": "player_b",
+      "turns": 8,
+      "forfeited_by": null,
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 4,
+      "total_moves_b": 4,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "row": 0,
+            "col": 0
+          },
+          "valid": true
+        },
+        {
+          "turn": 2,
+          "player": "player_b",
+          "move": {
+            "row": 0,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 3,
+          "player": "player_a",
+          "move": {
+            "row": 1,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 4,
+          "player": "player_b",
+          "move": {
+            "row": 2,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 5,
+          "player": "player_a",
+          "move": {
+            "row": 1,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 6,
+          "player": "player_b",
+          "move": {
+            "row": 2,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 7,
+          "player": "player_a",
+          "move": {
+            "row": 0,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 8,
+          "player": "player_b",
+          "move": {
+            "row": 2,
+            "col": 0
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [],
+      "extra": {}
+    },
+    {
+      "session_id": "sess_cb13e8766f",
+      "game_name": "tictactoe",
+      "player_a_id": "A_direct_llama-3.1-8b-instant",
+      "player_b_id": "B_cot_llama-3.1-8b-instant",
+      "player_a_strategy": "direct",
+      "player_b_strategy": "cot",
+      "winner": "player_a",
+      "turns": 7,
+      "forfeited_by": null,
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 4,
+      "total_moves_b": 3,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "row": 0,
+            "col": 0
+          },
+          "valid": true
+        },
+        {
+          "turn": 2,
+          "player": "player_b",
+          "move": {
+            "row": 0,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 3,
+          "player": "player_a",
+          "move": {
+            "row": 1,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 4,
+          "player": "player_b",
+          "move": {
+            "row": 2,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 5,
+          "player": "player_a",
+          "move": {
+            "row": 1,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 6,
+          "player": "player_b",
+          "move": {
+            "row": 2,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 7,
+          "player": "player_a",
+          "move": {
+            "row": 1,
+            "col": 0
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [],
+      "extra": {}
+    },
+    {
+      "session_id": "sess_2ae877b69f",
+      "game_name": "prisoners_dilemma",
+      "player_a_id": "A_direct_llama-3.1-8b-instant",
+      "player_b_id": "B_cot_llama-3.1-8b-instant",
+      "player_a_strategy": "direct",
+      "player_b_strategy": "cot",
+      "winner": "player_b",
+      "turns": 10,
+      "forfeited_by": null,
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 5,
+      "total_moves_b": 5,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "action": "cooperate"
+          },
+          "valid": true
+        },
+        {
+          "turn": 2,
+          "player": "player_b",
+          "move": {
+            "action": "cooperate"
+          },
+          "valid": true
+        },
+        {
+          "turn": 3,
+          "player": "player_a",
+          "move": {
+            "action": "cooperate"
+          },
+          "valid": true
+        },
+        {
+          "turn": 4,
+          "player": "player_b",
+          "move": {
+            "action": "defect"
+          },
+          "valid": true
+        },
+        {
+          "turn": 5,
+          "player": "player_a",
+          "move": {
+            "action": "defect"
+          },
+          "valid": true
+        },
+        {
+          "turn": 6,
+          "player": "player_b",
+          "move": {
+            "action": "defect"
+          },
+          "valid": true
+        },
+        {
+          "turn": 7,
+          "player": "player_a",
+          "move": {
+            "action": "defect"
+          },
+          "valid": true
+        },
+        {
+          "turn": 8,
+          "player": "player_b",
+          "move": {
+            "action": "defect"
+          },
+          "valid": true
+        },
+        {
+          "turn": 9,
+          "player": "player_a",
+          "move": {
+            "action": "defect"
+          },
+          "valid": true
+        },
+        {
+          "turn": 10,
+          "player": "player_b",
+          "move": {
+            "action": "defect"
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [],
+      "extra": {
+        "pareto_efficiency": 0.5666666666666667,
+        "player_a_actions": [
+          "cooperate",
+          "cooperate",
+          "defect",
+          "defect",
+          "defect"
+        ],
+        "player_b_actions": [
+          "cooperate",
+          "defect",
+          "defect",
+          "defect",
+          "defect"
+        ]
+      }
+    },
+    {
+      "session_id": "sess_3bd45012ca",
+      "game_name": "prisoners_dilemma",
+      "player_a_id": "A_direct_llama-3.1-8b-instant",
+      "player_b_id": "B_cot_llama-3.1-8b-instant",
+      "player_a_strategy": "direct",
+      "player_b_strategy": "cot",
+      "winner": "draw",
+      "turns": 10,
+      "forfeited_by": null,
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 5,
+      "total_moves_b": 5,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "action": "cooperate"
+          },
+          "valid": true
+        },
+        {
+          "turn": 2,
+          "player": "player_b",
+          "move": {
+            "action": "cooperate"
+          },
+          "valid": true
+        },
+        {
+          "turn": 3,
+          "player": "player_a",
+          "move": {
+            "action": "cooperate"
+          },
+          "valid": true
+        },
+        {
+          "turn": 4,
+          "player": "player_b",
+          "move": {
+            "action": "defect"
+          },
+          "valid": true
+        },
+        {
+          "turn": 5,
+          "player": "player_a",
+          "move": {
+            "action": "defect"
+          },
+          "valid": true
+        },
+        {
+          "turn": 6,
+          "player": "player_b",
+          "move": {
+            "action": "defect"
+          },
+          "valid": true
+        },
+        {
+          "turn": 7,
+          "player": "player_a",
+          "move": {
+            "action": "defect"
+          },
+          "valid": true
+        },
+        {
+          "turn": 8,
+          "player": "player_b",
+          "move": {
+            "action": "defect"
+          },
+          "valid": true
+        },
+        {
+          "turn": 9,
+          "player": "player_a",
+          "move": {
+            "action": "defect"
+          },
+          "valid": true
+        },
+        {
+          "turn": 10,
+          "player": "player_b",
+          "move": {
+            "action": "cooperate"
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [],
+      "extra": {
+        "pareto_efficiency": 0.6666666666666666,
+        "player_a_actions": [
+          "cooperate",
+          "cooperate",
+          "defect",
+          "defect",
+          "defect"
+        ],
+        "player_b_actions": [
+          "cooperate",
+          "defect",
+          "defect",
+          "defect",
+          "cooperate"
+        ]
+      }
+    },
+    {
+      "session_id": "sess_9438b4ae2b",
+      "game_name": "tictactoe",
+      "player_a_id": "A_cot_llama-3.1-8b-instant",
+      "player_b_id": "B_direct_llama-3.1-8b-instant",
+      "player_a_strategy": "cot",
+      "player_b_strategy": "direct",
+      "winner": "player_a",
+      "turns": 9,
+      "forfeited_by": null,
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 5,
+      "total_moves_b": 4,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "row": 0,
+            "col": 0
+          },
+          "valid": true
+        },
+        {
+          "turn": 2,
+          "player": "player_b",
+          "move": {
+            "row": 0,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 3,
+          "player": "player_a",
+          "move": {
+            "row": 1,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 4,
+          "player": "player_b",
+          "move": {
+            "row": 2,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 5,
+          "player": "player_a",
+          "move": {
+            "row": 1,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 6,
+          "player": "player_b",
+          "move": {
+            "row": 2,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 7,
+          "player": "player_a",
+          "move": {
+            "row": 0,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 8,
+          "player": "player_b",
+          "move": {
+            "row": 1,
+            "col": 0
+          },
+          "valid": true
+        },
+        {
+          "turn": 9,
+          "player": "player_a",
+          "move": {
+            "row": 2,
+            "col": 0
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [],
+      "extra": {}
+    },
+    {
+      "session_id": "sess_f1e6b9fd4c",
+      "game_name": "tictactoe",
+      "player_a_id": "A_cot_llama-3.1-8b-instant",
+      "player_b_id": "B_direct_llama-3.1-8b-instant",
+      "player_a_strategy": "cot",
+      "player_b_strategy": "direct",
+      "winner": "player_a",
+      "turns": 9,
+      "forfeited_by": null,
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 5,
+      "total_moves_b": 4,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "row": 0,
+            "col": 0
+          },
+          "valid": true
+        },
+        {
+          "turn": 2,
+          "player": "player_b",
+          "move": {
+            "row": 0,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 3,
+          "player": "player_a",
+          "move": {
+            "row": 1,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 4,
+          "player": "player_b",
+          "move": {
+            "row": 2,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 5,
+          "player": "player_a",
+          "move": {
+            "row": 1,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 6,
+          "player": "player_b",
+          "move": {
+            "row": 2,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 7,
+          "player": "player_a",
+          "move": {
+            "row": 0,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 8,
+          "player": "player_b",
+          "move": {
+            "row": 1,
+            "col": 0
+          },
+          "valid": true
+        },
+        {
+          "turn": 9,
+          "player": "player_a",
+          "move": {
+            "row": 2,
+            "col": 0
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [],
+      "extra": {}
+    },
+    {
+      "session_id": "sess_f9a4b86d38",
+      "game_name": "prisoners_dilemma",
+      "player_a_id": "A_cot_llama-3.1-8b-instant",
+      "player_b_id": "B_direct_llama-3.1-8b-instant",
+      "player_a_strategy": "cot",
+      "player_b_strategy": "direct",
+      "winner": "draw",
+      "turns": 10,
+      "forfeited_by": null,
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 5,
+      "total_moves_b": 5,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "action": "cooperate"
+          },
+          "valid": true
+        },
+        {
+          "turn": 2,
+          "player": "player_b",
+          "move": {
+            "action": "cooperate"
+          },
+          "valid": true
+        },
+        {
+          "turn": 3,
+          "player": "player_a",
+          "move": {
+            "action": "defect"
+          },
+          "valid": true
+        },
+        {
+          "turn": 4,
+          "player": "player_b",
+          "move": {
+            "action": "cooperate"
+          },
+          "valid": true
+        },
+        {
+          "turn": 5,
+          "player": "player_a",
+          "move": {
+            "action": "defect"
+          },
+          "valid": true
+        },
+        {
+          "turn": 6,
+          "player": "player_b",
+          "move": {
+            "action": "defect"
+          },
+          "valid": true
+        },
+        {
+          "turn": 7,
+          "player": "player_a",
+          "move": {
+            "action": "defect"
+          },
+          "valid": true
+        },
+        {
+          "turn": 8,
+          "player": "player_b",
+          "move": {
+            "action": "defect"
+          },
+          "valid": true
+        },
+        {
+          "turn": 9,
+          "player": "player_a",
+          "move": {
+            "action": "cooperate"
+          },
+          "valid": true
+        },
+        {
+          "turn": 10,
+          "player": "player_b",
+          "move": {
+            "action": "defect"
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [],
+      "extra": {
+        "pareto_efficiency": 0.6666666666666666,
+        "player_a_actions": [
+          "cooperate",
+          "defect",
+          "defect",
+          "defect",
+          "cooperate"
+        ],
+        "player_b_actions": [
+          "cooperate",
+          "cooperate",
+          "defect",
+          "defect",
+          "defect"
+        ]
+      }
+    },
+    {
+      "session_id": "sess_fe00dcf831",
+      "game_name": "prisoners_dilemma",
+      "player_a_id": "A_cot_llama-3.1-8b-instant",
+      "player_b_id": "B_direct_llama-3.1-8b-instant",
+      "player_a_strategy": "cot",
+      "player_b_strategy": "direct",
+      "winner": "player_a",
+      "turns": 10,
+      "forfeited_by": null,
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 5,
+      "total_moves_b": 5,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "action": "cooperate"
+          },
+          "valid": true
+        },
+        {
+          "turn": 2,
+          "player": "player_b",
+          "move": {
+            "action": "cooperate"
+          },
+          "valid": true
+        },
+        {
+          "turn": 3,
+          "player": "player_a",
+          "move": {
+            "action": "defect"
+          },
+          "valid": true
+        },
+        {
+          "turn": 4,
+          "player": "player_b",
+          "move": {
+            "action": "cooperate"
+          },
+          "valid": true
+        },
+        {
+          "turn": 5,
+          "player": "player_a",
+          "move": {
+            "action": "defect"
+          },
+          "valid": true
+        },
+        {
+          "turn": 6,
+          "player": "player_b",
+          "move": {
+            "action": "defect"
+          },
+          "valid": true
+        },
+        {
+          "turn": 7,
+          "player": "player_a",
+          "move": {
+            "action": "defect"
+          },
+          "valid": true
+        },
+        {
+          "turn": 8,
+          "player": "player_b",
+          "move": {
+            "action": "defect"
+          },
+          "valid": true
+        },
+        {
+          "turn": 9,
+          "player": "player_a",
+          "move": {
+            "action": "defect"
+          },
+          "valid": true
+        },
+        {
+          "turn": 10,
+          "player": "player_b",
+          "move": {
+            "action": "defect"
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [],
+      "extra": {
+        "pareto_efficiency": 0.5666666666666667,
+        "player_a_actions": [
+          "cooperate",
+          "defect",
+          "defect",
+          "defect",
+          "defect"
+        ],
+        "player_b_actions": [
+          "cooperate",
+          "cooperate",
+          "defect",
+          "defect",
+          "defect"
+        ]
+      }
+    }
+  ]
+}

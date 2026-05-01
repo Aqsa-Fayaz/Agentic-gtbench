@@ -88,6 +88,19 @@ class TicTacToe(BaseGame):
         rows = [f"{i} {' '.join(self.board[i])}" for i in range(3)]
         return "\n".join([header] + rows)
 
+    @classmethod
+    def from_state(cls, state: dict) -> "TicTacToe":
+        game = cls()
+        board = state.get("board") or [[cls.EMPTY] * 3 for _ in range(3)]
+        game.board = [list(row) for row in board]
+        # Infer turn_number from non-empty cells to keep current_player in sync.
+        filled = sum(1 for r in range(3) for c in range(3) if game.board[r][c] != cls.EMPTY)
+        game.turn_number = state.get("turn_number", filled)
+        game._winner = state.get("winner")
+        if game._winner is None:
+            game._winner = game._check_winner()
+        return game
+
     def _check_winner(self) -> Optional[str]:
         b = self.board
         lines = (
