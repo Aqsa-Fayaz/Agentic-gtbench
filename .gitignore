@@ -20,10 +20,11 @@ build/
 *.so
 
 # Results (generated outputs — too large for git)
-results/*.json
-results/*.csv
-results/*.html
-results/*.png
+results/**/*.json
+results/**/*.csv
+results/**/*.html
+results/**/*.txt
+results/**/*.png
 logs/
 
 # Keep gitkeep markers

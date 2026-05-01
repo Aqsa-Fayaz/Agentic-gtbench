@@ -1,0 +1,23 @@
+experiment_name: "Gemma OpenRouter Comparison"
+strategy: cot
+temperature: 0.3
+
+games:
+  - tictactoe
+  - prisoners_dilemma
+  - kuhn_poker
+
+rounds_per_matchup: 10
+
+matchups:
+  - player_a_model: "google/gemma-3-12b-it"
+    player_a_provider: openrouter
+    player_b_model: "google/gemma-3n-e2b-it:free"
+    player_b_provider: openrouter
+
+output_formats:
+  - json
+  - csv
+  - html
+
+include_llm_summary: true

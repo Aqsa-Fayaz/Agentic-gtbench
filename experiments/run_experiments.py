@@ -153,7 +153,10 @@ def run_experiment(config: dict) -> dict:
                 initial_state["session_id"] = assignment["session_id"]
 
                 try:
-                    final_state = graph.invoke(initial_state)
+                    final_state = graph.invoke(
+                        initial_state,
+                        config={"recursion_limit": 200},
+                    )
                     result = final_state["session_meta"].get("result", {})
                     completed += 1
                     logger.info(

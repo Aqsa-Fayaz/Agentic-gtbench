@@ -20,7 +20,7 @@ cp .env.example .env
 ### 0.2 — Set API Keys in `.env`
 ```
 OPENAI_API_KEY=sk-...
-GROQ_API_KEY=gsk_...             # Free tier for Llama-3
+OPENROUTER_API_KEY=sk-or-...     # Optional: route models via OpenRouter
 ANTHROPIC_API_KEY=...            # Optional
 LOG_LEVEL=INFO
 RESULTS_DIR=./results
@@ -397,12 +397,18 @@ experiment_name: "Model Comparison"
 games: [tictactoe, prisoners_dilemma, kuhn_poker]
 rounds_per_matchup: 15
 matchups:
-  - player_a_model: gpt-4o
-    player_b_model: gpt-3.5-turbo
-  - player_a_model: gpt-4o
-    player_b_model: llama-3-8b-8192   # via Groq
-  - player_a_model: gpt-3.5-turbo
-    player_b_model: llama-3-8b-8192
+  - player_a_model: openai/gpt-4o
+    player_a_provider: openrouter
+    player_b_model: openai/gpt-3.5-turbo
+    player_b_provider: openrouter
+  - player_a_model: openai/gpt-4o
+    player_a_provider: openrouter
+    player_b_model: meta-llama/llama-3-8b-instruct
+    player_b_provider: openrouter
+  - player_a_model: openai/gpt-3.5-turbo
+    player_a_provider: openrouter
+    player_b_model: meta-llama/llama-3-8b-instruct
+    player_b_provider: openrouter
 strategy: cot
 temperature: 0.3
 ```
