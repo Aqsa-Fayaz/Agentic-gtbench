@@ -1,0 +1,234 @@
+{
+  "generated_at": "2026-05-01T11:19:47.629766+00:00",
+  "report": {
+    "total_sessions": 3,
+    "win_rates": {
+      "('direct', 'pig')": {
+        "strategy": "direct",
+        "game": "pig",
+        "games": 1,
+        "win_rate": 1.0,
+        "draw_rate": 0.0,
+        "loss_rate": 0.0
+      },
+      "('cot', 'pig')": {
+        "strategy": "cot",
+        "game": "pig",
+        "games": 1,
+        "win_rate": 0.0,
+        "draw_rate": 0.0,
+        "loss_rate": 1.0
+      },
+      "('direct', 'blind_auction')": {
+        "strategy": "direct",
+        "game": "blind_auction",
+        "games": 1,
+        "win_rate": 0.0,
+        "draw_rate": 1.0,
+        "loss_rate": 0.0
+      },
+      "('cot', 'blind_auction')": {
+        "strategy": "cot",
+        "game": "blind_auction",
+        "games": 1,
+        "win_rate": 0.0,
+        "draw_rate": 1.0,
+        "loss_rate": 0.0
+      },
+      "('direct', 'liars_dice')": {
+        "strategy": "direct",
+        "game": "liars_dice",
+        "games": 1,
+        "win_rate": 1.0,
+        "draw_rate": 0.0,
+        "loss_rate": 0.0
+      },
+      "('cot', 'liars_dice')": {
+        "strategy": "cot",
+        "game": "liars_dice",
+        "games": 1,
+        "win_rate": 0.0,
+        "draw_rate": 0.0,
+        "loss_rate": 1.0
+      }
+    },
+    "invalid_rates": {
+      "A_direct_llama-3.1-8b-instant": {
+        "invalid_moves": 0,
+        "total_moves": 3,
+        "invalid_rate": 0.0
+      },
+      "B_cot_llama-3.1-8b-instant": {
+        "invalid_moves": 0,
+        "total_moves": 5,
+        "invalid_rate": 0.0
+      }
+    },
+    "elo_ratings": {
+      "A_direct_llama-3.1-8b-instant": 1029.1953024918978,
+      "B_cot_llama-3.1-8b-instant": 970.8046975081021
+    },
+    "avg_turns": {
+      "('direct', 'pig')": {
+        "strategy": "direct",
+        "game": "pig",
+        "avg_turns": 1.0,
+        "min_turns": 1,
+        "max_turns": 1,
+        "samples": 1
+      },
+      "('direct', 'liars_dice')": {
+        "strategy": "direct",
+        "game": "liars_dice",
+        "avg_turns": 2.0,
+        "min_turns": 2,
+        "max_turns": 2,
+        "samples": 1
+      }
+    },
+    "nra": {
+      "by_strategy": {
+        "direct": {
+          "score_self": 2.5,
+          "score_opp": 0.5,
+          "n": 3,
+          "nra": 0.6667
+        },
+        "cot": {
+          "score_self": 0.5,
+          "score_opp": 2.5,
+          "n": 3,
+          "nra": -0.6667
+        }
+      },
+      "by_pair": {
+        "direct vs cot": {
+          "score_self": 2.5,
+          "score_opp": 0.5,
+          "n": 3,
+          "nra": 0.6667
+        },
+        "cot vs direct": {
+          "score_self": 0.5,
+          "score_opp": 2.5,
+          "n": 3,
+          "nra": -0.6667
+        }
+      }
+    },
+    "pareto_efficiency": {},
+    "cooperation_rates": {}
+  },
+  "sessions": [
+    {
+      "session_id": "sess_1e6eff9adc",
+      "game_name": "pig",
+      "game_kwargs": {
+        "target_score": 20
+      },
+      "player_a_id": "A_direct_llama-3.1-8b-instant",
+      "player_b_id": "B_cot_llama-3.1-8b-instant",
+      "player_a_strategy": "direct",
+      "player_b_strategy": "cot",
+      "winner": "player_a",
+      "turns": 1,
+      "forfeited_by": "player_b",
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 1,
+      "total_moves_b": 3,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "action": "roll"
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [
+        "player_b: It is not player_b's turn.",
+        "player_b: It is not player_b's turn.",
+        "player_b: It is not player_b's turn."
+      ],
+      "extra": {}
+    },
+    {
+      "session_id": "sess_4d77c811e3",
+      "game_name": "blind_auction",
+      "game_kwargs": {},
+      "player_a_id": "A_direct_llama-3.1-8b-instant",
+      "player_b_id": "B_cot_llama-3.1-8b-instant",
+      "player_a_strategy": "direct",
+      "player_b_strategy": "cot",
+      "winner": "draw",
+      "turns": 2,
+      "forfeited_by": null,
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 1,
+      "total_moves_b": 1,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "bid": 100
+          },
+          "valid": true
+        },
+        {
+          "turn": 2,
+          "player": "player_b",
+          "move": {
+            "bid": 100
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [],
+      "extra": {}
+    },
+    {
+      "session_id": "sess_ebd46996a9",
+      "game_name": "liars_dice",
+      "game_kwargs": {
+        "dice_per_player": 3
+      },
+      "player_a_id": "A_direct_llama-3.1-8b-instant",
+      "player_b_id": "B_cot_llama-3.1-8b-instant",
+      "player_a_strategy": "direct",
+      "player_b_strategy": "cot",
+      "winner": "player_a",
+      "turns": 2,
+      "forfeited_by": null,
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 1,
+      "total_moves_b": 1,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "action": "bid",
+            "face": 4,
+            "count": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 2,
+          "player": "player_b",
+          "move": {
+            "action": "call"
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [],
+      "extra": {}
+    }
+  ]
+}

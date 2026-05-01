@@ -1,0 +1,40 @@
+# -----------------------------------------------------------------------------
+# MCTS-vs-LLM — paper-faithful baseline matchup
+# -----------------------------------------------------------------------------
+# Reproduces the GTBench paper §4.1 experiment: a strong MCTS opponent vs
+# LLM-driven players. Uses a reduced simulation budget (200 instead of 1000)
+# to keep wall time manageable; 200 sims still beats Random reliably.
+#
+# 2 matchups (mcts-vs-direct + mcts-vs-cot, with the swap)
+# x 2 games (tictactoe + nim)
+# x 2 rounds
+# = 8 sessions, ~50 LLM calls
+# -----------------------------------------------------------------------------
+
+experiment_name: "MCTS vs LLM"
+provider: groq
+temperature: 0.2
+mcts_simulations: 200
+
+games:
+  - tictactoe
+  - nim
+
+rounds_per_matchup: 2
+
+matchups:
+  - player_a_strategy: mcts
+    player_b_strategy: direct
+  - player_a_strategy: direct
+    player_b_strategy: mcts
+  - player_a_strategy: mcts
+    player_b_strategy: cot
+  - player_a_strategy: cot
+    player_b_strategy: mcts
+
+output_formats:
+  - json
+  - csv
+  - html
+
+include_llm_summary: false

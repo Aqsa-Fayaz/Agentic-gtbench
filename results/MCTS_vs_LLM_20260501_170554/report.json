@@ -1,0 +1,1424 @@
+{
+  "generated_at": "2026-05-01T12:06:55.000276+00:00",
+  "report": {
+    "total_sessions": 16,
+    "win_rates": {
+      "('mcts', 'tictactoe')": {
+        "strategy": "mcts",
+        "game": "tictactoe",
+        "games": 8,
+        "win_rate": 1.0,
+        "draw_rate": 0.0,
+        "loss_rate": 0.0
+      },
+      "('direct', 'tictactoe')": {
+        "strategy": "direct",
+        "game": "tictactoe",
+        "games": 4,
+        "win_rate": 0.0,
+        "draw_rate": 0.0,
+        "loss_rate": 1.0
+      },
+      "('mcts', 'nim')": {
+        "strategy": "mcts",
+        "game": "nim",
+        "games": 8,
+        "win_rate": 0.75,
+        "draw_rate": 0.0,
+        "loss_rate": 0.25
+      },
+      "('direct', 'nim')": {
+        "strategy": "direct",
+        "game": "nim",
+        "games": 4,
+        "win_rate": 0.25,
+        "draw_rate": 0.0,
+        "loss_rate": 0.75
+      },
+      "('cot', 'tictactoe')": {
+        "strategy": "cot",
+        "game": "tictactoe",
+        "games": 4,
+        "win_rate": 0.0,
+        "draw_rate": 0.0,
+        "loss_rate": 1.0
+      },
+      "('cot', 'nim')": {
+        "strategy": "cot",
+        "game": "nim",
+        "games": 4,
+        "win_rate": 0.25,
+        "draw_rate": 0.0,
+        "loss_rate": 0.75
+      }
+    },
+    "invalid_rates": {
+      "A_mcts_200": {
+        "invalid_moves": 0,
+        "total_moves": 26,
+        "invalid_rate": 0.0
+      },
+      "B_direct_llama-3.1-8b-instant": {
+        "invalid_moves": 0,
+        "total_moves": 11,
+        "invalid_rate": 0.0
+      },
+      "A_direct_llama-3.1-8b-instant": {
+        "invalid_moves": 0,
+        "total_moves": 14,
+        "invalid_rate": 0.0
+      },
+      "B_mcts_200": {
+        "invalid_moves": 0,
+        "total_moves": 26,
+        "invalid_rate": 0.0
+      },
+      "B_cot_llama-3.1-8b-instant": {
+        "invalid_moves": 0,
+        "total_moves": 10,
+        "invalid_rate": 0.0
+      },
+      "A_cot_llama-3.1-8b-instant": {
+        "invalid_moves": 0,
+        "total_moves": 15,
+        "invalid_rate": 0.0
+      }
+    },
+    "elo_ratings": {
+      "A_mcts_200": 1071.0194353021268,
+      "B_direct_llama-3.1-8b-instant": 944.1990573710023,
+      "A_direct_llama-3.1-8b-instant": 976.1990573710023,
+      "B_mcts_200": 1075.8948737363298,
+      "B_cot_llama-3.1-8b-instant": 984.7815073268711,
+      "A_cot_llama-3.1-8b-instant": 947.906068892668
+    },
+    "avg_turns": {
+      "('mcts', 'tictactoe')": {
+        "strategy": "mcts",
+        "game": "tictactoe",
+        "avg_turns": 7.0,
+        "min_turns": 5,
+        "max_turns": 8,
+        "samples": 8
+      },
+      "('mcts', 'nim')": {
+        "strategy": "mcts",
+        "game": "nim",
+        "avg_turns": 5.5,
+        "min_turns": 4,
+        "max_turns": 7,
+        "samples": 6
+      },
+      "('direct', 'nim')": {
+        "strategy": "direct",
+        "game": "nim",
+        "avg_turns": 6.0,
+        "min_turns": 6,
+        "max_turns": 6,
+        "samples": 1
+      },
+      "('cot', 'nim')": {
+        "strategy": "cot",
+        "game": "nim",
+        "avg_turns": 7.0,
+        "min_turns": 7,
+        "max_turns": 7,
+        "samples": 1
+      }
+    },
+    "nra": {
+      "by_strategy": {
+        "mcts": {
+          "score_self": 14.0,
+          "score_opp": 2.0,
+          "n": 16,
+          "nra": 0.75
+        },
+        "direct": {
+          "score_self": 1.0,
+          "score_opp": 7.0,
+          "n": 8,
+          "nra": -0.75
+        },
+        "cot": {
+          "score_self": 1.0,
+          "score_opp": 7.0,
+          "n": 8,
+          "nra": -0.75
+        }
+      },
+      "by_pair": {
+        "mcts vs direct": {
+          "score_self": 7.0,
+          "score_opp": 1.0,
+          "n": 8,
+          "nra": 0.75
+        },
+        "direct vs mcts": {
+          "score_self": 1.0,
+          "score_opp": 7.0,
+          "n": 8,
+          "nra": -0.75
+        },
+        "mcts vs cot": {
+          "score_self": 7.0,
+          "score_opp": 1.0,
+          "n": 8,
+          "nra": 0.75
+        },
+        "cot vs mcts": {
+          "score_self": 1.0,
+          "score_opp": 7.0,
+          "n": 8,
+          "nra": -0.75
+        }
+      }
+    },
+    "regret": {
+      "by_strategy_per_game": {},
+      "by_strategy": {}
+    },
+    "pareto_efficiency": {},
+    "cooperation_rates": {}
+  },
+  "sessions": [
+    {
+      "session_id": "sess_f49e33fb2c",
+      "game_name": "tictactoe",
+      "game_kwargs": {},
+      "player_a_id": "A_mcts_200",
+      "player_b_id": "B_direct_llama-3.1-8b-instant",
+      "player_a_strategy": "mcts",
+      "player_b_strategy": "direct",
+      "winner": "player_a",
+      "turns": 5,
+      "forfeited_by": null,
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 3,
+      "total_moves_b": 2,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "row": 2,
+            "col": 0
+          },
+          "valid": true
+        },
+        {
+          "turn": 2,
+          "player": "player_b",
+          "move": {
+            "row": 1,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 3,
+          "player": "player_a",
+          "move": {
+            "row": 2,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 4,
+          "player": "player_b",
+          "move": {
+            "row": 1,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 5,
+          "player": "player_a",
+          "move": {
+            "row": 2,
+            "col": 2
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [],
+      "extra": {}
+    },
+    {
+      "session_id": "sess_d4c332f5cb",
+      "game_name": "tictactoe",
+      "game_kwargs": {},
+      "player_a_id": "A_mcts_200",
+      "player_b_id": "B_direct_llama-3.1-8b-instant",
+      "player_a_strategy": "mcts",
+      "player_b_strategy": "direct",
+      "winner": "player_a",
+      "turns": 7,
+      "forfeited_by": null,
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 4,
+      "total_moves_b": 3,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "row": 1,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 2,
+          "player": "player_b",
+          "move": {
+            "row": 1,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 3,
+          "player": "player_a",
+          "move": {
+            "row": 2,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 4,
+          "player": "player_b",
+          "move": {
+            "row": 0,
+            "col": 0
+          },
+          "valid": true
+        },
+        {
+          "turn": 5,
+          "player": "player_a",
+          "move": {
+            "row": 2,
+            "col": 0
+          },
+          "valid": true
+        },
+        {
+          "turn": 6,
+          "player": "player_b",
+          "move": {
+            "row": 0,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 7,
+          "player": "player_a",
+          "move": {
+            "row": 2,
+            "col": 1
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [],
+      "extra": {}
+    },
+    {
+      "session_id": "sess_b0e1c9f9ab",
+      "game_name": "nim",
+      "game_kwargs": {},
+      "player_a_id": "A_mcts_200",
+      "player_b_id": "B_direct_llama-3.1-8b-instant",
+      "player_a_strategy": "mcts",
+      "player_b_strategy": "direct",
+      "winner": "player_a",
+      "turns": 6,
+      "forfeited_by": null,
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 3,
+      "total_moves_b": 3,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "pile": 0,
+            "count": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 2,
+          "player": "player_b",
+          "move": {
+            "pile": 2,
+            "count": 7
+          },
+          "valid": true
+        },
+        {
+          "turn": 3,
+          "player": "player_a",
+          "move": {
+            "pile": 1,
+            "count": 3
+          },
+          "valid": true
+        },
+        {
+          "turn": 4,
+          "player": "player_b",
+          "move": {
+            "pile": 0,
+            "count": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 5,
+          "player": "player_a",
+          "move": {
+            "pile": 1,
+            "count": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 6,
+          "player": "player_b",
+          "move": {
+            "pile": 0,
+            "count": 1
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [],
+      "extra": {}
+    },
+    {
+      "session_id": "sess_5e74bb091f",
+      "game_name": "nim",
+      "game_kwargs": {},
+      "player_a_id": "A_mcts_200",
+      "player_b_id": "B_direct_llama-3.1-8b-instant",
+      "player_a_strategy": "mcts",
+      "player_b_strategy": "direct",
+      "winner": "player_a",
+      "turns": 6,
+      "forfeited_by": null,
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 3,
+      "total_moves_b": 3,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "pile": 0,
+            "count": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 2,
+          "player": "player_b",
+          "move": {
+            "pile": 1,
+            "count": 5
+          },
+          "valid": true
+        },
+        {
+          "turn": 3,
+          "player": "player_a",
+          "move": {
+            "pile": 2,
+            "count": 5
+          },
+          "valid": true
+        },
+        {
+          "turn": 4,
+          "player": "player_b",
+          "move": {
+            "pile": 0,
+            "count": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 5,
+          "player": "player_a",
+          "move": {
+            "pile": 2,
+            "count": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 6,
+          "player": "player_b",
+          "move": {
+            "pile": 0,
+            "count": 1
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [],
+      "extra": {}
+    },
+    {
+      "session_id": "sess_3295a4c86f",
+      "game_name": "tictactoe",
+      "game_kwargs": {},
+      "player_a_id": "A_direct_llama-3.1-8b-instant",
+      "player_b_id": "B_mcts_200",
+      "player_a_strategy": "direct",
+      "player_b_strategy": "mcts",
+      "winner": "player_b",
+      "turns": 8,
+      "forfeited_by": null,
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 4,
+      "total_moves_b": 4,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "row": 0,
+            "col": 0
+          },
+          "valid": true
+        },
+        {
+          "turn": 2,
+          "player": "player_b",
+          "move": {
+            "row": 1,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 3,
+          "player": "player_a",
+          "move": {
+            "row": 0,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 4,
+          "player": "player_b",
+          "move": {
+            "row": 0,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 5,
+          "player": "player_a",
+          "move": {
+            "row": 2,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 6,
+          "player": "player_b",
+          "move": {
+            "row": 1,
+            "col": 0
+          },
+          "valid": true
+        },
+        {
+          "turn": 7,
+          "player": "player_a",
+          "move": {
+            "row": 2,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 8,
+          "player": "player_b",
+          "move": {
+            "row": 1,
+            "col": 2
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [],
+      "extra": {}
+    },
+    {
+      "session_id": "sess_c10ff6789f",
+      "game_name": "tictactoe",
+      "game_kwargs": {},
+      "player_a_id": "A_direct_llama-3.1-8b-instant",
+      "player_b_id": "B_mcts_200",
+      "player_a_strategy": "direct",
+      "player_b_strategy": "mcts",
+      "winner": "player_b",
+      "turns": 8,
+      "forfeited_by": null,
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 4,
+      "total_moves_b": 4,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "row": 0,
+            "col": 0
+          },
+          "valid": true
+        },
+        {
+          "turn": 2,
+          "player": "player_b",
+          "move": {
+            "row": 2,
+            "col": 0
+          },
+          "valid": true
+        },
+        {
+          "turn": 3,
+          "player": "player_a",
+          "move": {
+            "row": 0,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 4,
+          "player": "player_b",
+          "move": {
+            "row": 0,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 5,
+          "player": "player_a",
+          "move": {
+            "row": 1,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 6,
+          "player": "player_b",
+          "move": {
+            "row": 2,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 7,
+          "player": "player_a",
+          "move": {
+            "row": 1,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 8,
+          "player": "player_b",
+          "move": {
+            "row": 2,
+            "col": 1
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [],
+      "extra": {}
+    },
+    {
+      "session_id": "sess_a56c632feb",
+      "game_name": "nim",
+      "game_kwargs": {},
+      "player_a_id": "A_direct_llama-3.1-8b-instant",
+      "player_b_id": "B_mcts_200",
+      "player_a_strategy": "direct",
+      "player_b_strategy": "mcts",
+      "winner": "player_b",
+      "turns": 5,
+      "forfeited_by": null,
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 3,
+      "total_moves_b": 2,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "pile": 2,
+            "count": 7
+          },
+          "valid": true
+        },
+        {
+          "turn": 2,
+          "player": "player_b",
+          "move": {
+            "pile": 1,
+            "count": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 3,
+          "player": "player_a",
+          "move": {
+            "pile": 1,
+            "count": 4
+          },
+          "valid": true
+        },
+        {
+          "turn": 4,
+          "player": "player_b",
+          "move": {
+            "pile": 0,
+            "count": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 5,
+          "player": "player_a",
+          "move": {
+            "pile": 0,
+            "count": 1
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [],
+      "extra": {}
+    },
+    {
+      "session_id": "sess_4ebd3f3d3c",
+      "game_name": "nim",
+      "game_kwargs": {},
+      "player_a_id": "A_direct_llama-3.1-8b-instant",
+      "player_b_id": "B_mcts_200",
+      "player_a_strategy": "direct",
+      "player_b_strategy": "mcts",
+      "winner": "player_a",
+      "turns": 6,
+      "forfeited_by": null,
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 3,
+      "total_moves_b": 3,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "pile": 1,
+            "count": 5
+          },
+          "valid": true
+        },
+        {
+          "turn": 2,
+          "player": "player_b",
+          "move": {
+            "pile": 2,
+            "count": 5
+          },
+          "valid": true
+        },
+        {
+          "turn": 3,
+          "player": "player_a",
+          "move": {
+            "pile": 0,
+            "count": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 4,
+          "player": "player_b",
+          "move": {
+            "pile": 2,
+            "count": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 5,
+          "player": "player_a",
+          "move": {
+            "pile": 0,
+            "count": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 6,
+          "player": "player_b",
+          "move": {
+            "pile": 2,
+            "count": 1
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [],
+      "extra": {}
+    },
+    {
+      "session_id": "sess_158ee1760f",
+      "game_name": "tictactoe",
+      "game_kwargs": {},
+      "player_a_id": "A_mcts_200",
+      "player_b_id": "B_cot_llama-3.1-8b-instant",
+      "player_a_strategy": "mcts",
+      "player_b_strategy": "cot",
+      "winner": "player_a",
+      "turns": 7,
+      "forfeited_by": null,
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 4,
+      "total_moves_b": 3,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "row": 2,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 2,
+          "player": "player_b",
+          "move": {
+            "row": 1,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 3,
+          "player": "player_a",
+          "move": {
+            "row": 1,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 4,
+          "player": "player_b",
+          "move": {
+            "row": 0,
+            "col": 0
+          },
+          "valid": true
+        },
+        {
+          "turn": 5,
+          "player": "player_a",
+          "move": {
+            "row": 2,
+            "col": 0
+          },
+          "valid": true
+        },
+        {
+          "turn": 6,
+          "player": "player_b",
+          "move": {
+            "row": 0,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 7,
+          "player": "player_a",
+          "move": {
+            "row": 2,
+            "col": 1
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [],
+      "extra": {}
+    },
+    {
+      "session_id": "sess_b75e1ea15e",
+      "game_name": "tictactoe",
+      "game_kwargs": {},
+      "player_a_id": "A_mcts_200",
+      "player_b_id": "B_cot_llama-3.1-8b-instant",
+      "player_a_strategy": "mcts",
+      "player_b_strategy": "cot",
+      "winner": "player_a",
+      "turns": 5,
+      "forfeited_by": null,
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 3,
+      "total_moves_b": 2,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "row": 2,
+            "col": 0
+          },
+          "valid": true
+        },
+        {
+          "turn": 2,
+          "player": "player_b",
+          "move": {
+            "row": 1,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 3,
+          "player": "player_a",
+          "move": {
+            "row": 2,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 4,
+          "player": "player_b",
+          "move": {
+            "row": 0,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 5,
+          "player": "player_a",
+          "move": {
+            "row": 2,
+            "col": 1
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [],
+      "extra": {}
+    },
+    {
+      "session_id": "sess_3979985e55",
+      "game_name": "nim",
+      "game_kwargs": {},
+      "player_a_id": "A_mcts_200",
+      "player_b_id": "B_cot_llama-3.1-8b-instant",
+      "player_a_strategy": "mcts",
+      "player_b_strategy": "cot",
+      "winner": "player_a",
+      "turns": 4,
+      "forfeited_by": null,
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 2,
+      "total_moves_b": 2,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "pile": 0,
+            "count": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 2,
+          "player": "player_b",
+          "move": {
+            "pile": 1,
+            "count": 5
+          },
+          "valid": true
+        },
+        {
+          "turn": 3,
+          "player": "player_a",
+          "move": {
+            "pile": 2,
+            "count": 7
+          },
+          "valid": true
+        },
+        {
+          "turn": 4,
+          "player": "player_b",
+          "move": {
+            "pile": 0,
+            "count": 1
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [],
+      "extra": {}
+    },
+    {
+      "session_id": "sess_0f9d2bd403",
+      "game_name": "nim",
+      "game_kwargs": {},
+      "player_a_id": "A_mcts_200",
+      "player_b_id": "B_cot_llama-3.1-8b-instant",
+      "player_a_strategy": "mcts",
+      "player_b_strategy": "cot",
+      "winner": "player_b",
+      "turns": 7,
+      "forfeited_by": null,
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 4,
+      "total_moves_b": 3,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "pile": 1,
+            "count": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 2,
+          "player": "player_b",
+          "move": {
+            "pile": 2,
+            "count": 7
+          },
+          "valid": true
+        },
+        {
+          "turn": 3,
+          "player": "player_a",
+          "move": {
+            "pile": 1,
+            "count": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 4,
+          "player": "player_b",
+          "move": {
+            "pile": 0,
+            "count": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 5,
+          "player": "player_a",
+          "move": {
+            "pile": 0,
+            "count": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 6,
+          "player": "player_b",
+          "move": {
+            "pile": 1,
+            "count": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 7,
+          "player": "player_a",
+          "move": {
+            "pile": 0,
+            "count": 1
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [],
+      "extra": {}
+    },
+    {
+      "session_id": "sess_a0a41537d8",
+      "game_name": "tictactoe",
+      "game_kwargs": {},
+      "player_a_id": "A_cot_llama-3.1-8b-instant",
+      "player_b_id": "B_mcts_200",
+      "player_a_strategy": "cot",
+      "player_b_strategy": "mcts",
+      "winner": "player_b",
+      "turns": 8,
+      "forfeited_by": null,
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 4,
+      "total_moves_b": 4,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "row": 0,
+            "col": 0
+          },
+          "valid": true
+        },
+        {
+          "turn": 2,
+          "player": "player_b",
+          "move": {
+            "row": 1,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 3,
+          "player": "player_a",
+          "move": {
+            "row": 0,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 4,
+          "player": "player_b",
+          "move": {
+            "row": 0,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 5,
+          "player": "player_a",
+          "move": {
+            "row": 2,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 6,
+          "player": "player_b",
+          "move": {
+            "row": 1,
+            "col": 0
+          },
+          "valid": true
+        },
+        {
+          "turn": 7,
+          "player": "player_a",
+          "move": {
+            "row": 2,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 8,
+          "player": "player_b",
+          "move": {
+            "row": 1,
+            "col": 2
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [],
+      "extra": {}
+    },
+    {
+      "session_id": "sess_49b19ab6f4",
+      "game_name": "tictactoe",
+      "game_kwargs": {},
+      "player_a_id": "A_cot_llama-3.1-8b-instant",
+      "player_b_id": "B_mcts_200",
+      "player_a_strategy": "cot",
+      "player_b_strategy": "mcts",
+      "winner": "player_b",
+      "turns": 8,
+      "forfeited_by": null,
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 4,
+      "total_moves_b": 4,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "row": 0,
+            "col": 0
+          },
+          "valid": true
+        },
+        {
+          "turn": 2,
+          "player": "player_b",
+          "move": {
+            "row": 2,
+            "col": 0
+          },
+          "valid": true
+        },
+        {
+          "turn": 3,
+          "player": "player_a",
+          "move": {
+            "row": 0,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 4,
+          "player": "player_b",
+          "move": {
+            "row": 0,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 5,
+          "player": "player_a",
+          "move": {
+            "row": 1,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 6,
+          "player": "player_b",
+          "move": {
+            "row": 2,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 7,
+          "player": "player_a",
+          "move": {
+            "row": 1,
+            "col": 0
+          },
+          "valid": true
+        },
+        {
+          "turn": 8,
+          "player": "player_b",
+          "move": {
+            "row": 2,
+            "col": 2
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [],
+      "extra": {}
+    },
+    {
+      "session_id": "sess_55437d65a5",
+      "game_name": "nim",
+      "game_kwargs": {},
+      "player_a_id": "A_cot_llama-3.1-8b-instant",
+      "player_b_id": "B_mcts_200",
+      "player_a_strategy": "cot",
+      "player_b_strategy": "mcts",
+      "winner": "player_b",
+      "turns": 5,
+      "forfeited_by": null,
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 3,
+      "total_moves_b": 2,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "pile": 0,
+            "count": 3
+          },
+          "valid": true
+        },
+        {
+          "turn": 2,
+          "player": "player_b",
+          "move": {
+            "pile": 1,
+            "count": 3
+          },
+          "valid": true
+        },
+        {
+          "turn": 3,
+          "player": "player_a",
+          "move": {
+            "pile": 2,
+            "count": 7
+          },
+          "valid": true
+        },
+        {
+          "turn": 4,
+          "player": "player_b",
+          "move": {
+            "pile": 1,
+            "count": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 5,
+          "player": "player_a",
+          "move": {
+            "pile": 1,
+            "count": 1
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [],
+      "extra": {}
+    },
+    {
+      "session_id": "sess_b27ab7d8bd",
+      "game_name": "nim",
+      "game_kwargs": {},
+      "player_a_id": "A_cot_llama-3.1-8b-instant",
+      "player_b_id": "B_mcts_200",
+      "player_a_strategy": "cot",
+      "player_b_strategy": "mcts",
+      "winner": "player_b",
+      "turns": 7,
+      "forfeited_by": null,
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 4,
+      "total_moves_b": 3,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "pile": 2,
+            "count": 7
+          },
+          "valid": true
+        },
+        {
+          "turn": 2,
+          "player": "player_b",
+          "move": {
+            "pile": 1,
+            "count": 3
+          },
+          "valid": true
+        },
+        {
+          "turn": 3,
+          "player": "player_a",
+          "move": {
+            "pile": 0,
+            "count": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 4,
+          "player": "player_b",
+          "move": {
+            "pile": 0,
+            "count": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 5,
+          "player": "player_a",
+          "move": {
+            "pile": 1,
+            "count": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 6,
+          "player": "player_b",
+          "move": {
+            "pile": 1,
+            "count": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 7,
+          "player": "player_a",
+          "move": {
+            "pile": 0,
+            "count": 1
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [],
+      "extra": {}
+    }
+  ]
+}

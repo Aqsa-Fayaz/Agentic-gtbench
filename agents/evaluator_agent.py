@@ -98,18 +98,38 @@ class EvaluatorAgent(BaseAgent):
         output_dir: Path,
         formats: Optional[list[str]] = None,
         include_llm_summary: bool = False,
+        include_error_profile: bool = False,
+        only_losing_side: bool = True,
     ) -> dict:
         """
         Export all metrics + raw sessions to disk in the requested formats.
         Returns a manifest of written files.
+
+        If `include_error_profile=True`, runs the ErrorProfileAgent over all
+        recorded sessions and embeds the per-strategy aggregate in the report.
         """
         formats = formats or ["json"]
         output_dir = Path(output_dir)
         output_dir.mkdir(parents=True, exist_ok=True)
 
-        report = self.full_report()
         sessions = list(self.engine.sessions)
         reporter = Reporter(output_dir=output_dir)
+
+        # Optional: run the error-profile classifier BEFORE assembling the
+        # report so its aggregate is included in report.json + report.html.
+        if include_error_profile:
+            from agents.error_profile_agent import ErrorProfileAgent
+
+            judge = ErrorProfileAgent()
+            for sess in sessions:
+                judge.classify_session(sess, only_losing_side=only_losing_side)
+            self.engine.attach_error_profile(judge.aggregate_by_strategy())
+            (output_dir / "error_findings.json").write_text(
+                __import__("json").dumps(judge.findings, indent=2, default=str),
+                encoding="utf-8",
+            )
+
+        report = self.full_report()
 
         written: dict[str, str] = {}
         if "json" in formats:
@@ -118,6 +138,8 @@ class EvaluatorAgent(BaseAgent):
             written["csv"] = str(reporter.write_csv(sessions))
         if "html" in formats:
             written["html"] = str(reporter.write_html(report, sessions))
+        if include_error_profile:
+            written["error_findings"] = str(output_dir / "error_findings.json")
 
         if include_llm_summary:
             summary = self.qualitative_summary(report)

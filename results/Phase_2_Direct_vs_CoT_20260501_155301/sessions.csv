@@ -1,0 +1,9 @@
+session_id,game_name,player_a_id,player_b_id,player_a_strategy,player_b_strategy,winner,turns,forfeited_by,invalid_moves_a,invalid_moves_b,total_moves_a,total_moves_b,pareto_efficiency
+sess_d16a7481f3,tictactoe,A_direct_llama-3.1-8b-instant,B_cot_llama-3.1-8b-instant,direct,cot,player_b,8,,0,0,4,4,
+sess_cb13e8766f,tictactoe,A_direct_llama-3.1-8b-instant,B_cot_llama-3.1-8b-instant,direct,cot,player_a,7,,0,0,4,3,
+sess_2ae877b69f,prisoners_dilemma,A_direct_llama-3.1-8b-instant,B_cot_llama-3.1-8b-instant,direct,cot,player_b,10,,0,0,5,5,0.5666666666666667
+sess_3bd45012ca,prisoners_dilemma,A_direct_llama-3.1-8b-instant,B_cot_llama-3.1-8b-instant,direct,cot,draw,10,,0,0,5,5,0.6666666666666666
+sess_9438b4ae2b,tictactoe,A_cot_llama-3.1-8b-instant,B_direct_llama-3.1-8b-instant,cot,direct,player_a,9,,0,0,5,4,
+sess_f1e6b9fd4c,tictactoe,A_cot_llama-3.1-8b-instant,B_direct_llama-3.1-8b-instant,cot,direct,player_a,9,,0,0,5,4,
+sess_f9a4b86d38,prisoners_dilemma,A_cot_llama-3.1-8b-instant,B_direct_llama-3.1-8b-instant,cot,direct,draw,10,,0,0,5,5,0.6666666666666666
+sess_fe00dcf831,prisoners_dilemma,A_cot_llama-3.1-8b-instant,B_direct_llama-3.1-8b-instant,cot,direct,player_a,10,,0,0,5,5,0.5666666666666667

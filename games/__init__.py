@@ -5,6 +5,11 @@ from games.prisoners_dilemma import PrisonersDilemma
 from games.connect4 import Connect4
 from games.nim import Nim
 from games.kuhn_poker import KuhnPoker
+from games.pig import Pig
+from games.blind_auction import BlindAuction
+from games.liars_dice import LiarsDice
+from games.breakthrough import Breakthrough
+from games.negotiation import Negotiation
 
 GAME_REGISTRY = {
     "tictactoe": TicTacToe,
@@ -12,6 +17,11 @@ GAME_REGISTRY = {
     "connect4": Connect4,
     "nim": Nim,
     "kuhn_poker": KuhnPoker,
+    "pig": Pig,
+    "blind_auction": BlindAuction,
+    "liars_dice": LiarsDice,
+    "breakthrough": Breakthrough,
+    "negotiation": Negotiation,
 }
 
 
@@ -38,6 +48,11 @@ __all__ = [
     "Connect4",
     "Nim",
     "KuhnPoker",
+    "Pig",
+    "BlindAuction",
+    "LiarsDice",
+    "Breakthrough",
+    "Negotiation",
     "GAME_REGISTRY",
     "load_game",
 ]

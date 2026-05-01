@@ -1,0 +1,317 @@
+[
+  {
+    "session_id": "sess_d16a7481f3",
+    "game_name": "tictactoe",
+    "turn": 1,
+    "player": "player_a",
+    "strategy": "direct",
+    "move": {
+      "row": 0,
+      "col": 0
+    },
+    "category": "ok",
+    "rationale": "first move in empty board, no clear error"
+  },
+  {
+    "session_id": "sess_d16a7481f3",
+    "game_name": "tictactoe",
+    "turn": 3,
+    "player": "player_a",
+    "strategy": "direct",
+    "move": {
+      "row": 1,
+      "col": 1
+    },
+    "category": "endgame_misdetection",
+    "rationale": "Player_a failed to block winning line for opponent."
+  },
+  {
+    "session_id": "sess_d16a7481f3",
+    "game_name": "tictactoe",
+    "turn": 5,
+    "player": "player_a",
+    "strategy": "direct",
+    "move": {
+      "row": 1,
+      "col": 2
+    },
+    "category": "overconfidence",
+    "rationale": "Player_a took unnecessary risk by placing X in a corner, losing a potential winning line."
+  },
+  {
+    "session_id": "sess_d16a7481f3",
+    "game_name": "tictactoe",
+    "turn": 7,
+    "player": "player_a",
+    "strategy": "direct",
+    "move": {
+      "row": 0,
+      "col": 2
+    },
+    "category": "overconfidence",
+    "rationale": "Player_a took unnecessary risk by placing X in a corner, losing a winning opportunity"
+  },
+  {
+    "session_id": "sess_cb13e8766f",
+    "game_name": "tictactoe",
+    "turn": 2,
+    "player": "player_b",
+    "strategy": "cot",
+    "move": {
+      "row": 0,
+      "col": 1
+    },
+    "category": "ok",
+    "rationale": "move within legal options, no clear error detected"
+  },
+  {
+    "session_id": "sess_cb13e8766f",
+    "game_name": "tictactoe",
+    "turn": 4,
+    "player": "player_b",
+    "strategy": "cot",
+    "move": {
+      "row": 2,
+      "col": 2
+    },
+    "category": "endgame_misdetection",
+    "rationale": "Player_b failed to block winning line for player_a."
+  },
+  {
+    "session_id": "sess_cb13e8766f",
+    "game_name": "tictactoe",
+    "turn": 6,
+    "player": "player_b",
+    "strategy": "cot",
+    "move": {
+      "row": 2,
+      "col": 1
+    },
+    "category": "endgame_misdetection",
+    "rationale": "Player_b failed to recognize a winning opportunity for player_a."
+  },
+  {
+    "session_id": "sess_2ae877b69f",
+    "game_name": "prisoners_dilemma",
+    "turn": 1,
+    "player": "player_a",
+    "strategy": "direct",
+    "move": {
+      "action": "cooperate"
+    },
+    "category": "ok",
+    "rationale": "no clear error in cooperative choice at game start"
+  },
+  {
+    "session_id": "sess_2ae877b69f",
+    "game_name": "prisoners_dilemma",
+    "turn": 3,
+    "player": "player_a",
+    "strategy": "direct",
+    "move": {
+      "action": "cooperate"
+    },
+    "category": "overconfidence",
+    "rationale": "Player_a took unnecessary risk for a marginal reward in round 2."
+  },
+  {
+    "session_id": "sess_2ae877b69f",
+    "game_name": "prisoners_dilemma",
+    "turn": 5,
+    "player": "player_a",
+    "strategy": "direct",
+    "move": {
+      "action": "defect"
+    },
+    "category": "overconfidence",
+    "rationale": "Player_a took unnecessary risk for a marginal reward in a non-last round."
+  },
+  {
+    "session_id": "sess_2ae877b69f",
+    "game_name": "prisoners_dilemma",
+    "turn": 7,
+    "player": "player_a",
+    "strategy": "direct",
+    "move": {
+      "action": "defect"
+    },
+    "category": "overconfidence",
+    "rationale": "Player_a took unnecessary risk for a marginal reward in a non-last round."
+  },
+  {
+    "session_id": "sess_2ae877b69f",
+    "game_name": "prisoners_dilemma",
+    "turn": 9,
+    "player": "player_a",
+    "strategy": "direct",
+    "move": {
+      "action": "defect"
+    },
+    "category": "overconfidence",
+    "rationale": "Player_a took unnecessary risk for a marginal reward in a non-last round."
+  },
+  {
+    "session_id": "sess_9438b4ae2b",
+    "game_name": "tictactoe",
+    "turn": 2,
+    "player": "player_b",
+    "strategy": "direct",
+    "move": {
+      "row": 0,
+      "col": 1
+    },
+    "category": "ok",
+    "rationale": "move within legal options, no clear error detected"
+  },
+  {
+    "session_id": "sess_9438b4ae2b",
+    "game_name": "tictactoe",
+    "turn": 4,
+    "player": "player_b",
+    "strategy": "direct",
+    "move": {
+      "row": 2,
+      "col": 1
+    },
+    "category": "overconfidence",
+    "rationale": "Player_b took unnecessary risk by placing O in a corner, losing a potential winning line."
+  },
+  {
+    "session_id": "sess_9438b4ae2b",
+    "game_name": "tictactoe",
+    "turn": 6,
+    "player": "player_b",
+    "strategy": "direct",
+    "move": {
+      "row": 2,
+      "col": 2
+    },
+    "category": "endgame_misdetection",
+    "rationale": "Player_b failed to recognize a winning opportunity for player_a."
+  },
+  {
+    "session_id": "sess_9438b4ae2b",
+    "game_name": "tictactoe",
+    "turn": 8,
+    "player": "player_b",
+    "strategy": "direct",
+    "move": {
+      "row": 1,
+      "col": 0
+    },
+    "category": "endgame_misdetection",
+    "rationale": "Player_b failed to block winning line for player_a."
+  },
+  {
+    "session_id": "sess_f1e6b9fd4c",
+    "game_name": "tictactoe",
+    "turn": 2,
+    "player": "player_b",
+    "strategy": "direct",
+    "move": {
+      "row": 0,
+      "col": 1
+    },
+    "category": "ok",
+    "rationale": "move within legal options, no clear error detected"
+  },
+  {
+    "session_id": "sess_f1e6b9fd4c",
+    "game_name": "tictactoe",
+    "turn": 4,
+    "player": "player_b",
+    "strategy": "direct",
+    "move": {
+      "row": 2,
+      "col": 1
+    },
+    "category": "overconfidence",
+    "rationale": "Player_b took unnecessary risk by placing O in a corner, losing a potential winning line."
+  },
+  {
+    "session_id": "sess_f1e6b9fd4c",
+    "game_name": "tictactoe",
+    "turn": 6,
+    "player": "player_b",
+    "strategy": "direct",
+    "move": {
+      "row": 2,
+      "col": 2
+    },
+    "category": "endgame_misdetection",
+    "rationale": "Player_b failed to recognize a winning opportunity for player_a."
+  },
+  {
+    "session_id": "sess_f1e6b9fd4c",
+    "game_name": "tictactoe",
+    "turn": 8,
+    "player": "player_b",
+    "strategy": "direct",
+    "move": {
+      "row": 1,
+      "col": 0
+    },
+    "category": "endgame_misdetection",
+    "rationale": "Player_b failed to block winning line for player_a."
+  },
+  {
+    "session_id": "sess_fe00dcf831",
+    "game_name": "prisoners_dilemma",
+    "turn": 2,
+    "player": "player_b",
+    "strategy": "direct",
+    "move": {
+      "action": "cooperate"
+    },
+    "category": "ok",
+    "rationale": "no clear error; cooperative strategy in first round"
+  },
+  {
+    "session_id": "sess_fe00dcf831",
+    "game_name": "prisoners_dilemma",
+    "turn": 4,
+    "player": "player_b",
+    "strategy": "direct",
+    "move": {
+      "action": "cooperate"
+    },
+    "category": "overconfidence",
+    "rationale": "Player_b took unnecessary risk for a marginal reward in a non-endgame situation."
+  },
+  {
+    "session_id": "sess_fe00dcf831",
+    "game_name": "prisoners_dilemma",
+    "turn": 6,
+    "player": "player_b",
+    "strategy": "direct",
+    "move": {
+      "action": "defect"
+    },
+    "category": "overconfidence",
+    "rationale": "Player_b took unnecessary risk for a marginal reward in a non-last round."
+  },
+  {
+    "session_id": "sess_fe00dcf831",
+    "game_name": "prisoners_dilemma",
+    "turn": 8,
+    "player": "player_b",
+    "strategy": "direct",
+    "move": {
+      "action": "defect"
+    },
+    "category": "overconfidence",
+    "rationale": "Player_b took unnecessary risk for a marginal reward in a non-last round."
+  },
+  {
+    "session_id": "sess_fe00dcf831",
+    "game_name": "prisoners_dilemma",
+    "turn": 10,
+    "player": "player_b",
+    "strategy": "direct",
+    "move": {
+      "action": "defect"
+    },
+    "category": "overconfidence",
+    "rationale": "Player_b took unnecessary risk for a marginal reward in a non-last round."
+  }
+]

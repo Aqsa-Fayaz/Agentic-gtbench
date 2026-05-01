@@ -1,0 +1,46 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Agentic GTBench Report</title>
+<style>
+body { font-family: system-ui, sans-serif; margin: 2em; color: #222; }
+h1 { color: #1a365d; }
+h2 { margin-top: 1.8em; border-bottom: 1px solid #ccc; padding-bottom: .2em; }
+.tbl { border-collapse: collapse; margin: .5em 0 2em; width: 100%; font-size: 14px; }
+.tbl th, .tbl td { border: 1px solid #ccc; padding: 6px 10px; text-align: left; }
+.tbl th { background: #f0f4fa; }
+.meta { color: #666; font-size: 13px; }
+</style></head>
+<body>
+<h1>Agentic GTBench — Tournament Report</h1>
+<p class="meta">Generated: 2026-05-01T11:19:47.630765+00:00 &middot; Total sessions: 3</p>
+
+<h2>Win Rates (by strategy × game)</h2>
+<table class='tbl'><thead><tr><th>Strategy</th><th>Game</th><th>Games</th><th>Win</th><th>Draw</th><th>Loss</th></tr></thead><tbody><tr><td>direct</td><td>pig</td><td>1</td><td>1.000</td><td>0.000</td><td>0.000</td></tr><tr><td>cot</td><td>pig</td><td>1</td><td>0.000</td><td>0.000</td><td>1.000</td></tr><tr><td>direct</td><td>blind_auction</td><td>1</td><td>0.000</td><td>1.000</td><td>0.000</td></tr><tr><td>cot</td><td>blind_auction</td><td>1</td><td>0.000</td><td>1.000</td><td>0.000</td></tr><tr><td>direct</td><td>liars_dice</td><td>1</td><td>1.000</td><td>0.000</td><td>0.000</td></tr><tr><td>cot</td><td>liars_dice</td><td>1</td><td>0.000</td><td>0.000</td><td>1.000</td></tr></tbody></table>
+
+<h2>Invalid Move Rates (per agent)</h2>
+<table class='tbl'><thead><tr><th>Agent</th><th>Invalid</th><th>Total</th><th>Rate</th></tr></thead><tbody><tr><td>A_direct_llama-3.1-8b-instant</td><td>0</td><td>3</td><td>0.000</td></tr><tr><td>B_cot_llama-3.1-8b-instant</td><td>0</td><td>5</td><td>0.000</td></tr></tbody></table>
+
+<h2>Elo Ratings</h2>
+<table class='tbl'><thead><tr><th>Agent</th><th>Elo</th></tr></thead><tbody><tr><td>A_direct_llama-3.1-8b-instant</td><td>1029.195</td></tr><tr><td>B_cot_llama-3.1-8b-instant</td><td>970.805</td></tr></tbody></table>
+
+<h2>Average Turns to Win</h2>
+<table class='tbl'><thead><tr><th>Strategy</th><th>Game</th><th>Avg</th><th>Min</th><th>Max</th><th>Samples</th></tr></thead><tbody><tr><td>direct</td><td>pig</td><td>1.000</td><td>1</td><td>1</td><td>1</td></tr><tr><td>direct</td><td>liars_dice</td><td>2.000</td><td>2</td><td>2</td><td>1</td></tr></tbody></table>
+
+<h2>Normalized Relative Advantage — by strategy (paper §2.2)</h2>
+<p class="meta">NRA &gt; 0: this strategy outperforms its opponents on average. Range [-1, 1].</p>
+<table class='tbl'><thead><tr><th>Strategy</th><th>Matches</th><th>Score Self</th><th>Score Opp</th><th>NRA</th></tr></thead><tbody><tr><td>direct</td><td>3</td><td>2.500</td><td>0.500</td><td>0.667</td></tr><tr><td>cot</td><td>3</td><td>0.500</td><td>2.500</td><td>-0.667</td></tr></tbody></table>
+
+<h2>Normalized Relative Advantage — by matchup</h2>
+<table class='tbl'><thead><tr><th>Pairing (self vs opp)</th><th>Matches</th><th>Score Self</th><th>Score Opp</th><th>NRA</th></tr></thead><tbody><tr><td>direct vs cot</td><td>3</td><td>2.500</td><td>0.500</td><td>0.667</td></tr><tr><td>cot vs direct</td><td>3</td><td>0.500</td><td>2.500</td><td>-0.667</td></tr></tbody></table>
+
+<h2>Cooperation Rates (Prisoner's Dilemma)</h2>
+<table class='tbl'><thead><tr><th>Strategy</th><th>Cooperation Rate</th><th>Total Actions</th></tr></thead><tbody></tbody></table>
+
+<h2>Pareto Efficiency (Prisoner's Dilemma)</h2>
+<table class='tbl'><thead><tr><th>Matchup</th><th>Avg Pareto</th><th>Samples</th></tr></thead><tbody></tbody></table>
+
+<h2>Error Profile (LLM-as-judge over losing-side moves)</h2>
+<table class='tbl'><thead><tr><th>Strategy</th><th>Moves Judged</th><th>Misinterpretation</th><th>Factual Error</th><th>Overconfidence</th><th>Calculation Mistake</th><th>Endgame Misdetection</th><th>Ok</th></tr></thead><tbody></tbody></table>
+
+<h2>Raw Sessions</h2>
+<table class='tbl'><thead><tr><th>Session</th><th>Game</th><th>Strategy A</th><th>Strategy B</th><th>Winner</th><th>Turns</th><th>Forfeit</th></tr></thead><tbody><tr><td>sess_1e6eff9adc</td><td>pig</td><td>direct</td><td>cot</td><td>player_a</td><td>1</td><td>player_b</td></tr><tr><td>sess_4d77c811e3</td><td>blind_auction</td><td>direct</td><td>cot</td><td>draw</td><td>2</td><td></td></tr><tr><td>sess_ebd46996a9</td><td>liars_dice</td><td>direct</td><td>cot</td><td>player_a</td><td>2</td><td></td></tr></tbody></table>
+</body></html>

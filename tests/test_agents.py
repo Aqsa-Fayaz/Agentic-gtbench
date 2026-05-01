@@ -225,6 +225,59 @@ class TestHistoryManagerTool:
         assert stats["draws"] == 1
 
 
+class TestConventionalAgents:
+    """Tests for the non-LLM playable agents (Random, TfT, MCTS)."""
+
+    def test_random_picks_only_legal(self):
+        from agents.random_agent import RandomAgent
+        agent = RandomAgent("rnd", seed=0)
+        legal = [{"row": 0, "col": 0}, {"row": 1, "col": 1}]
+        for _ in range(5):
+            move = agent.decide({}, "tictactoe", legal)
+            assert move in legal
+
+    def test_tft_first_move_is_cooperate(self):
+        from agents.tit_for_tat_agent import TitForTatAgent
+        agent = TitForTatAgent("tft")
+        move = agent.decide(
+            {"current_player": "player_a", "round_history": []},
+            "prisoners_dilemma",
+            [{"action": "cooperate"}, {"action": "defect"}],
+        )
+        assert move == {"action": "cooperate"}
+
+    def test_tft_mirrors_opponent_last(self):
+        from agents.tit_for_tat_agent import TitForTatAgent
+        agent = TitForTatAgent("tft")
+        # I'm player_a; opponent (player_b) defected last round → I should defect.
+        move = agent.decide(
+            {
+                "current_player": "player_a",
+                "round_history": [
+                    {"player_a_action": "cooperate", "player_b_action": "defect"}
+                ],
+            },
+            "prisoners_dilemma",
+            [{"action": "cooperate"}, {"action": "defect"}],
+        )
+        assert move == {"action": "defect"}
+
+    def test_mcts_beats_random_on_tictactoe(self):
+        """MCTS with even modest sims should reliably beat Random on TTT."""
+        from agents.mcts_agent import MCTSAgent
+        from agents.random_agent import RandomAgent
+
+        wins = 0
+        for trial in range(3):
+            mcts = MCTSAgent("mcts", n_simulations=100, seed=trial)
+            rnd = RandomAgent("rnd", seed=trial + 100)
+            orch = OrchestratorAgent()
+            result = orch.run_session("tictactoe", mcts, rnd)
+            if result["winner"] == "player_a":
+                wins += 1
+        assert wins >= 2, f"MCTS should win 2+/3 games against Random, got {wins}"
+
+
 class TestOrchestrator:
     def test_run_session_with_deterministic_players(self, monkeypatch):
         """

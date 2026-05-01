@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir *)",
+      "Bash(.venv/Scripts/python.exe -c ' *)",
+      "Bash(.venv/Scripts/python.exe -m pytest tests/ -q --tb=short)",
+      "Bash(cd /d D:\\\\Assignment\\\\AgenticAI\\\\Project)",
+      "Bash(Get-ChildItem -Recurse -Force)",
+      "Bash(Select-Object FullName)",
+      "Bash(cd /d \"D:\\\\Assignment\\\\AgenticAI\\\\Project\")",
+      "Bash(Get-ChildItem -Path . -Force)",
+      "Bash(Select-Object -Property Name, Mode)",
+      "Bash(grep \"\\\\.py$\")",
+      "Bash(xargs grep *)",
+      "Bash(python -c \"from config.settings import settings; print\\('provider:', settings.default_provider\\); print\\('groq_model:', settings.default_groq_model\\); print\\('groq_keys_count:', len\\(settings.groq_keys\\)\\); print\\('first_key_prefix:', settings.groq_keys[0][:8] if settings.groq_keys else 'NONE'\\)\")",
+      "Bash(D:/Assignment/AgenticAI/Project/.venv/Scripts/python.exe *)",
+      "Bash(\"D:/Assignment/AgenticAI/Project/.venv/Scripts/python.exe\" experiments/run_experiments.py --config experiments/configs/exp_smoke.yaml)",
+      "Bash(\"D:/Assignment/AgenticAI/Project/.venv/Scripts/python.exe\" -m pytest tests/test_evaluation.py -v)",
+      "Bash(\"D:/Assignment/AgenticAI/Project/.venv/Scripts/python.exe\" experiments/run_experiments.py --config experiments/configs/exp_phase2.yaml)",
+      "Bash(\"D:/Assignment/AgenticAI/Project/.venv/Scripts/python.exe\" experiments/classify_existing.py \"results/Phase_2_Direct_vs_CoT_20260501_155301\")",
+      "Bash(\"D:/Assignment/AgenticAI/Project/.venv/Scripts/python.exe\" -m pytest tests/ -v --tb=short)",
+      "Bash(\"D:/Assignment/AgenticAI/Project/.venv/Scripts/python.exe\" experiments/run_experiments.py --config experiments/configs/exp_react_smoke.yaml)",
+      "Bash(\"D:/Assignment/AgenticAI/Project/.venv/Scripts/python.exe\" -m pytest tests/test_games.py -v)",
+      "Bash(\"D:/Assignment/AgenticAI/Project/.venv/Scripts/python.exe\" experiments/run_experiments.py --config experiments/configs/exp_new_games_smoke.yaml)",
+      "Bash(\"D:/Assignment/AgenticAI/Project/.venv/Scripts/python.exe\" -m pytest tests/ -q)",
+      "Bash(\"D:/Assignment/AgenticAI/Project/.venv/Scripts/python.exe\" evaluation/plots.py \"results/Phase_2_Direct_vs_CoT_20260501_155301\")",
+      "Bash(\"D:/Assignment/AgenticAI/Project/.venv/Scripts/python.exe\" -m pytest tests/ --tb=no --collect-only -q)",
+      "Bash(\"D:/Assignment/AgenticAI/Project/.venv/Scripts/python.exe\" experiments/run_experiments.py --config experiments/configs/exp_mcts.yaml)",
+      "Bash(\"D:/Assignment/AgenticAI/Project/.venv/Scripts/python.exe\" evaluation/plots.py \"results/MCTS_vs_LLM_20260501_170554\")"
+    ]
+  }
+}

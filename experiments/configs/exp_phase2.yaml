@@ -1,0 +1,42 @@
+# -----------------------------------------------------------------------------
+# Phase 2 — Direct vs CoT, mirror matchup
+# -----------------------------------------------------------------------------
+# Goal: produce the project's first real comparative results between two
+# reasoning strategies under the agentic LangGraph runtime, on a Groq-only
+# call budget of ~70 LLM calls total.
+#
+# Design:
+#   2 matchups (direct-vs-cot + cot-vs-direct)   ← swap cancels first-mover bias
+# × 2 games   (tictactoe + prisoners_dilemma@5)  ← perfect-info + repeated game
+# × 2 rounds                                     ← keep call budget tight
+# = 8 sessions                                   ← Elo + win-rate per strategy
+# -----------------------------------------------------------------------------
+
+experiment_name: "Phase 2 Direct vs CoT"
+provider: groq
+temperature: 0.2                    # paper §4 spec
+
+games:
+  - tictactoe
+  - prisoners_dilemma
+
+# Per-game constructor kwargs.
+# Reduces PD from default 10 rounds to 5 (halves PD turn count → call budget).
+game_kwargs:
+  prisoners_dilemma:
+    num_rounds: 5
+
+rounds_per_matchup: 2
+
+matchups:
+  - player_a_strategy: direct
+    player_b_strategy: cot
+  - player_a_strategy: cot
+    player_b_strategy: direct
+
+output_formats:
+  - json
+  - csv
+  - html
+
+include_llm_summary: false          # do not spend extra calls on post-mortems

@@ -1,0 +1,146 @@
+{
+  "generated_at": "2026-05-01T10:50:32.695286+00:00",
+  "report": {
+    "total_sessions": 1,
+    "win_rates": {
+      "('direct', 'tictactoe')": {
+        "strategy": "direct",
+        "game": "tictactoe",
+        "games": 2,
+        "win_rate": 0.5,
+        "draw_rate": 0.0,
+        "loss_rate": 0.5
+      }
+    },
+    "invalid_rates": {
+      "A_direct_llama-3.1-8b-instant": {
+        "invalid_moves": 0,
+        "total_moves": 5,
+        "invalid_rate": 0.0
+      },
+      "B_direct_llama-3.1-8b-instant": {
+        "invalid_moves": 0,
+        "total_moves": 4,
+        "invalid_rate": 0.0
+      }
+    },
+    "elo_ratings": {
+      "A_direct_llama-3.1-8b-instant": 1016.0,
+      "B_direct_llama-3.1-8b-instant": 984.0
+    },
+    "avg_turns": {
+      "('direct', 'tictactoe')": {
+        "strategy": "direct",
+        "game": "tictactoe",
+        "avg_turns": 9.0,
+        "min_turns": 9,
+        "max_turns": 9,
+        "samples": 1
+      }
+    },
+    "pareto_efficiency": {},
+    "cooperation_rates": {}
+  },
+  "sessions": [
+    {
+      "session_id": "sess_57affc6156",
+      "game_name": "tictactoe",
+      "player_a_id": "A_direct_llama-3.1-8b-instant",
+      "player_b_id": "B_direct_llama-3.1-8b-instant",
+      "player_a_strategy": "direct",
+      "player_b_strategy": "direct",
+      "winner": "player_a",
+      "turns": 9,
+      "forfeited_by": null,
+      "invalid_moves_a": 0,
+      "invalid_moves_b": 0,
+      "total_moves_a": 5,
+      "total_moves_b": 4,
+      "move_history": [
+        {
+          "turn": 1,
+          "player": "player_a",
+          "move": {
+            "row": 0,
+            "col": 0
+          },
+          "valid": true
+        },
+        {
+          "turn": 2,
+          "player": "player_b",
+          "move": {
+            "row": 0,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 3,
+          "player": "player_a",
+          "move": {
+            "row": 1,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 4,
+          "player": "player_b",
+          "move": {
+            "row": 2,
+            "col": 1
+          },
+          "valid": true
+        },
+        {
+          "turn": 5,
+          "player": "player_a",
+          "move": {
+            "row": 1,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 6,
+          "player": "player_b",
+          "move": {
+            "row": 2,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 7,
+          "player": "player_a",
+          "move": {
+            "row": 0,
+            "col": 2
+          },
+          "valid": true
+        },
+        {
+          "turn": 8,
+          "player": "player_b",
+          "move": {
+            "row": 1,
+            "col": 0
+          },
+          "valid": true
+        },
+        {
+          "turn": 9,
+          "player": "player_a",
+          "move": {
+            "row": 2,
+            "col": 0
+          },
+          "valid": true
+        }
+      ],
+      "error_log": [],
+      "extra": {}
+    }
+  ]
+}

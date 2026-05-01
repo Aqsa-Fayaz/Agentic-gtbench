@@ -1,0 +1,53 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Agentic GTBench Report</title>
+<style>
+body { font-family: system-ui, sans-serif; margin: 2em; color: #222; }
+h1 { color: #1a365d; }
+h2 { margin-top: 1.8em; border-bottom: 1px solid #ccc; padding-bottom: .2em; }
+.tbl { border-collapse: collapse; margin: .5em 0 2em; width: 100%; font-size: 14px; }
+.tbl th, .tbl td { border: 1px solid #ccc; padding: 6px 10px; text-align: left; }
+.tbl th { background: #f0f4fa; }
+.meta { color: #666; font-size: 13px; }
+</style></head>
+<body>
+<h1>Agentic GTBench — Tournament Report</h1>
+<p class="meta">Generated: 2026-05-01T12:06:55.004235+00:00 &middot; Total sessions: 16</p>
+
+<h2>Win Rates (by strategy × game)</h2>
+<table class='tbl'><thead><tr><th>Strategy</th><th>Game</th><th>Games</th><th>Win</th><th>Draw</th><th>Loss</th></tr></thead><tbody><tr><td>mcts</td><td>tictactoe</td><td>8</td><td>1.000</td><td>0.000</td><td>0.000</td></tr><tr><td>direct</td><td>tictactoe</td><td>4</td><td>0.000</td><td>0.000</td><td>1.000</td></tr><tr><td>mcts</td><td>nim</td><td>8</td><td>0.750</td><td>0.000</td><td>0.250</td></tr><tr><td>direct</td><td>nim</td><td>4</td><td>0.250</td><td>0.000</td><td>0.750</td></tr><tr><td>cot</td><td>tictactoe</td><td>4</td><td>0.000</td><td>0.000</td><td>1.000</td></tr><tr><td>cot</td><td>nim</td><td>4</td><td>0.250</td><td>0.000</td><td>0.750</td></tr></tbody></table>
+
+<h2>Invalid Move Rates (per agent)</h2>
+<table class='tbl'><thead><tr><th>Agent</th><th>Invalid</th><th>Total</th><th>Rate</th></tr></thead><tbody><tr><td>A_mcts_200</td><td>0</td><td>26</td><td>0.000</td></tr><tr><td>B_direct_llama-3.1-8b-instant</td><td>0</td><td>11</td><td>0.000</td></tr><tr><td>A_direct_llama-3.1-8b-instant</td><td>0</td><td>14</td><td>0.000</td></tr><tr><td>B_mcts_200</td><td>0</td><td>26</td><td>0.000</td></tr><tr><td>B_cot_llama-3.1-8b-instant</td><td>0</td><td>10</td><td>0.000</td></tr><tr><td>A_cot_llama-3.1-8b-instant</td><td>0</td><td>15</td><td>0.000</td></tr></tbody></table>
+
+<h2>Elo Ratings</h2>
+<table class='tbl'><thead><tr><th>Agent</th><th>Elo</th></tr></thead><tbody><tr><td>A_mcts_200</td><td>1071.019</td></tr><tr><td>B_direct_llama-3.1-8b-instant</td><td>944.199</td></tr><tr><td>A_direct_llama-3.1-8b-instant</td><td>976.199</td></tr><tr><td>B_mcts_200</td><td>1075.895</td></tr><tr><td>B_cot_llama-3.1-8b-instant</td><td>984.782</td></tr><tr><td>A_cot_llama-3.1-8b-instant</td><td>947.906</td></tr></tbody></table>
+
+<h2>Average Turns to Win</h2>
+<table class='tbl'><thead><tr><th>Strategy</th><th>Game</th><th>Avg</th><th>Min</th><th>Max</th><th>Samples</th></tr></thead><tbody><tr><td>mcts</td><td>tictactoe</td><td>7.000</td><td>5</td><td>8</td><td>8</td></tr><tr><td>mcts</td><td>nim</td><td>5.500</td><td>4</td><td>7</td><td>6</td></tr><tr><td>direct</td><td>nim</td><td>6.000</td><td>6</td><td>6</td><td>1</td></tr><tr><td>cot</td><td>nim</td><td>7.000</td><td>7</td><td>7</td><td>1</td></tr></tbody></table>
+
+<h2>Normalized Relative Advantage — by strategy (paper §2.2)</h2>
+<p class="meta">NRA &gt; 0: this strategy outperforms its opponents on average. Range [-1, 1].</p>
+<table class='tbl'><thead><tr><th>Strategy</th><th>Matches</th><th>Score Self</th><th>Score Opp</th><th>NRA</th></tr></thead><tbody><tr><td>mcts</td><td>16</td><td>14.000</td><td>2.000</td><td>0.750</td></tr><tr><td>direct</td><td>8</td><td>1.000</td><td>7.000</td><td>-0.750</td></tr><tr><td>cot</td><td>8</td><td>1.000</td><td>7.000</td><td>-0.750</td></tr></tbody></table>
+
+<h2>Normalized Relative Advantage — by matchup</h2>
+<table class='tbl'><thead><tr><th>Pairing (self vs opp)</th><th>Matches</th><th>Score Self</th><th>Score Opp</th><th>NRA</th></tr></thead><tbody><tr><td>mcts vs direct</td><td>8</td><td>7.000</td><td>1.000</td><td>0.750</td></tr><tr><td>direct vs mcts</td><td>8</td><td>1.000</td><td>7.000</td><td>-0.750</td></tr><tr><td>mcts vs cot</td><td>8</td><td>7.000</td><td>1.000</td><td>0.750</td></tr><tr><td>cot vs mcts</td><td>8</td><td>1.000</td><td>7.000</td><td>-0.750</td></tr></tbody></table>
+
+<h2>Ex-Post Regret — by strategy (paper §5)</h2>
+<p class="meta">Lower is better. 0 means the player's actual play matched the best fixed-strategy ex-post.</p>
+<table class='tbl'><thead><tr><th>Strategy</th><th>Samples</th><th>Avg Regret</th><th>Total Regret</th></tr></thead><tbody></tbody></table>
+
+<h2>Ex-Post Regret — per (strategy × game)</h2>
+<table class='tbl'><thead><tr><th>Strategy on Game</th><th>Samples</th><th>Avg Regret</th><th>Total Regret</th></tr></thead><tbody></tbody></table>
+
+<h2>Cooperation Rates (Prisoner's Dilemma)</h2>
+<table class='tbl'><thead><tr><th>Strategy</th><th>Cooperation Rate</th><th>Total Actions</th></tr></thead><tbody></tbody></table>
+
+<h2>Pareto Efficiency (Prisoner's Dilemma)</h2>
+<table class='tbl'><thead><tr><th>Matchup</th><th>Avg Pareto</th><th>Samples</th></tr></thead><tbody></tbody></table>
+
+<h2>Error Profile (LLM-as-judge over losing-side moves)</h2>
+<table class='tbl'><thead><tr><th>Strategy</th><th>Moves Judged</th><th>Misinterpretation</th><th>Factual Error</th><th>Overconfidence</th><th>Calculation Mistake</th><th>Endgame Misdetection</th><th>Ok</th></tr></thead><tbody></tbody></table>
+
+<h2>Raw Sessions</h2>
+<table class='tbl'><thead><tr><th>Session</th><th>Game</th><th>Strategy A</th><th>Strategy B</th><th>Winner</th><th>Turns</th><th>Forfeit</th></tr></thead><tbody><tr><td>sess_f49e33fb2c</td><td>tictactoe</td><td>mcts</td><td>direct</td><td>player_a</td><td>5</td><td></td></tr><tr><td>sess_d4c332f5cb</td><td>tictactoe</td><td>mcts</td><td>direct</td><td>player_a</td><td>7</td><td></td></tr><tr><td>sess_b0e1c9f9ab</td><td>nim</td><td>mcts</td><td>direct</td><td>player_a</td><td>6</td><td></td></tr><tr><td>sess_5e74bb091f</td><td>nim</td><td>mcts</td><td>direct</td><td>player_a</td><td>6</td><td></td></tr><tr><td>sess_3295a4c86f</td><td>tictactoe</td><td>direct</td><td>mcts</td><td>player_b</td><td>8</td><td></td></tr><tr><td>sess_c10ff6789f</td><td>tictactoe</td><td>direct</td><td>mcts</td><td>player_b</td><td>8</td><td></td></tr><tr><td>sess_a56c632feb</td><td>nim</td><td>direct</td><td>mcts</td><td>player_b</td><td>5</td><td></td></tr><tr><td>sess_4ebd3f3d3c</td><td>nim</td><td>direct</td><td>mcts</td><td>player_a</td><td>6</td><td></td></tr><tr><td>sess_158ee1760f</td><td>tictactoe</td><td>mcts</td><td>cot</td><td>player_a</td><td>7</td><td></td></tr><tr><td>sess_b75e1ea15e</td><td>tictactoe</td><td>mcts</td><td>cot</td><td>player_a</td><td>5</td><td></td></tr><tr><td>sess_3979985e55</td><td>nim</td><td>mcts</td><td>cot</td><td>player_a</td><td>4</td><td></td></tr><tr><td>sess_0f9d2bd403</td><td>nim</td><td>mcts</td><td>cot</td><td>player_b</td><td>7</td><td></td></tr><tr><td>sess_a0a41537d8</td><td>tictactoe</td><td>cot</td><td>mcts</td><td>player_b</td><td>8</td><td></td></tr><tr><td>sess_49b19ab6f4</td><td>tictactoe</td><td>cot</td><td>mcts</td><td>player_b</td><td>8</td><td></td></tr><tr><td>sess_55437d65a5</td><td>nim</td><td>cot</td><td>mcts</td><td>player_b</td><td>5</td><td></td></tr><tr><td>sess_b27ab7d8bd</td><td>nim</td><td>cot</td><td>mcts</td><td>player_b</td><td>7</td><td></td></tr></tbody></table>
+</body></html>

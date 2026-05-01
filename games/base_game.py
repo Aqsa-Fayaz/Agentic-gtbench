@@ -94,6 +94,24 @@ class BaseGame(ABC):
         """
         raise NotImplementedError
 
+    @classmethod
+    def from_state(cls, state: dict) -> "BaseGame":
+        """
+        Reconstruct a game instance from a state dict (such as the one
+        returned by `get_state()` / `get_state_for_player()`).
+
+        Used by tools (e.g. MoveValidatorTool) that need to evaluate a move
+        without holding a live game reference.
+
+        Subclasses MUST override this if they want their tools to work
+        correctly. Default raises to fail loudly rather than silently
+        returning an empty game.
+        """
+        raise NotImplementedError(
+            f"{cls.__name__}.from_state is not implemented; the validator "
+            "tool will fall back to checking against an empty game."
+        )
+
     @property
     def name(self) -> str:
         """Game name — used for logging and tool dispatch."""

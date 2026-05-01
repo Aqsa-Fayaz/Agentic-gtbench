@@ -142,6 +142,38 @@ def _render_html(report: dict, sessions: list[dict]) -> str:
         [matchup, v.get("avg_pareto"), v.get("samples")]
         for matchup, v in (report.get("pareto_efficiency") or {}).items()
     ]
+    nra = report.get("nra") or {}
+    nra_strategy_rows = [
+        [strat, v.get("n"), v.get("score_self"), v.get("score_opp"), v.get("nra")]
+        for strat, v in (nra.get("by_strategy") or {}).items()
+    ]
+    nra_pair_rows = [
+        [pair, v.get("n"), v.get("score_self"), v.get("score_opp"), v.get("nra")]
+        for pair, v in (nra.get("by_pair") or {}).items()
+    ]
+    regret = report.get("regret") or {}
+    regret_strategy_rows = [
+        [strat, v.get("n"), v.get("avg_regret"), v.get("total_regret")]
+        for strat, v in (regret.get("by_strategy") or {}).items()
+    ]
+    regret_pair_rows = [
+        [pair, v.get("n"), v.get("avg_regret"), v.get("total_regret")]
+        for pair, v in (regret.get("by_strategy_per_game") or {}).items()
+    ]
+    error_rows = []
+    error_categories = (
+        "misinterpretation",
+        "factual_error",
+        "overconfidence",
+        "calculation_mistake",
+        "endgame_misdetection",
+        "ok",
+    )
+    for strat, counts in (report.get("error_profile") or {}).items():
+        error_rows.append(
+            [strat, counts.get("total", 0)]
+            + [counts.get(c, 0) for c in error_categories]
+        )
     session_rows = [
         [
             s.get("session_id"), s.get("game_name"),
@@ -178,11 +210,31 @@ h2 {{ margin-top: 1.8em; border-bottom: 1px solid #ccc; padding-bottom: .2em; }}
 <h2>Average Turns to Win</h2>
 {_render_table(['Strategy', 'Game', 'Avg', 'Min', 'Max', 'Samples'], turn_rows)}
 
+<h2>Normalized Relative Advantage — by strategy (paper §2.2)</h2>
+<p class="meta">NRA &gt; 0: this strategy outperforms its opponents on average. Range [-1, 1].</p>
+{_render_table(['Strategy', 'Matches', 'Score Self', 'Score Opp', 'NRA'], nra_strategy_rows)}
+
+<h2>Normalized Relative Advantage — by matchup</h2>
+{_render_table(['Pairing (self vs opp)', 'Matches', 'Score Self', 'Score Opp', 'NRA'], nra_pair_rows)}
+
+<h2>Ex-Post Regret — by strategy (paper §5)</h2>
+<p class="meta">Lower is better. 0 means the player's actual play matched the best fixed-strategy ex-post.</p>
+{_render_table(['Strategy', 'Samples', 'Avg Regret', 'Total Regret'], regret_strategy_rows)}
+
+<h2>Ex-Post Regret — per (strategy × game)</h2>
+{_render_table(['Strategy on Game', 'Samples', 'Avg Regret', 'Total Regret'], regret_pair_rows)}
+
 <h2>Cooperation Rates (Prisoner's Dilemma)</h2>
 {_render_table(['Strategy', 'Cooperation Rate', 'Total Actions'], coop_rows)}
 
 <h2>Pareto Efficiency (Prisoner's Dilemma)</h2>
 {_render_table(['Matchup', 'Avg Pareto', 'Samples'], pareto_rows)}
+
+<h2>Error Profile (LLM-as-judge over losing-side moves)</h2>
+{_render_table(
+    ['Strategy', 'Moves Judged'] + [c.replace('_', ' ').title() for c in error_categories],
+    error_rows,
+)}
 
 <h2>Raw Sessions</h2>
 {_render_table(['Session', 'Game', 'Strategy A', 'Strategy B', 'Winner', 'Turns', 'Forfeit'], session_rows)}

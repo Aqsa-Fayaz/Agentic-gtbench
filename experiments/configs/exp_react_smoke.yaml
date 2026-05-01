@@ -1,0 +1,25 @@
+# -----------------------------------------------------------------------------
+# ReAct Smoke — verifies tool-binding loop now works after validator fix
+# -----------------------------------------------------------------------------
+# 1 game (tictactoe), 1 round, react vs direct.
+# Goal: confirm a ReAct agent can complete a game end-to-end with the
+# MoveValidator tool actually returning correct legal_moves.
+# -----------------------------------------------------------------------------
+
+experiment_name: "ReAct Smoke"
+provider: groq
+temperature: 0.2
+
+games:
+  - tictactoe
+
+rounds_per_matchup: 1
+
+matchups:
+  - player_a_strategy: react
+    player_b_strategy: direct
+
+output_formats:
+  - json
+
+include_llm_summary: false

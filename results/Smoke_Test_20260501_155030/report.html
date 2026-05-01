@@ -1,0 +1,36 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Agentic GTBench Report</title>
+<style>
+body { font-family: system-ui, sans-serif; margin: 2em; color: #222; }
+h1 { color: #1a365d; }
+h2 { margin-top: 1.8em; border-bottom: 1px solid #ccc; padding-bottom: .2em; }
+.tbl { border-collapse: collapse; margin: .5em 0 2em; width: 100%; font-size: 14px; }
+.tbl th, .tbl td { border: 1px solid #ccc; padding: 6px 10px; text-align: left; }
+.tbl th { background: #f0f4fa; }
+.meta { color: #666; font-size: 13px; }
+</style></head>
+<body>
+<h1>Agentic GTBench — Tournament Report</h1>
+<p class="meta">Generated: 2026-05-01T10:50:32.696283+00:00 &middot; Total sessions: 1</p>
+
+<h2>Win Rates (by strategy × game)</h2>
+<table class='tbl'><thead><tr><th>Strategy</th><th>Game</th><th>Games</th><th>Win</th><th>Draw</th><th>Loss</th></tr></thead><tbody><tr><td>direct</td><td>tictactoe</td><td>2</td><td>0.500</td><td>0.000</td><td>0.500</td></tr></tbody></table>
+
+<h2>Invalid Move Rates (per agent)</h2>
+<table class='tbl'><thead><tr><th>Agent</th><th>Invalid</th><th>Total</th><th>Rate</th></tr></thead><tbody><tr><td>A_direct_llama-3.1-8b-instant</td><td>0</td><td>5</td><td>0.000</td></tr><tr><td>B_direct_llama-3.1-8b-instant</td><td>0</td><td>4</td><td>0.000</td></tr></tbody></table>
+
+<h2>Elo Ratings</h2>
+<table class='tbl'><thead><tr><th>Agent</th><th>Elo</th></tr></thead><tbody><tr><td>A_direct_llama-3.1-8b-instant</td><td>1016.000</td></tr><tr><td>B_direct_llama-3.1-8b-instant</td><td>984.000</td></tr></tbody></table>
+
+<h2>Average Turns to Win</h2>
+<table class='tbl'><thead><tr><th>Strategy</th><th>Game</th><th>Avg</th><th>Min</th><th>Max</th><th>Samples</th></tr></thead><tbody><tr><td>direct</td><td>tictactoe</td><td>9.000</td><td>9</td><td>9</td><td>1</td></tr></tbody></table>
+
+<h2>Cooperation Rates (Prisoner's Dilemma)</h2>
+<table class='tbl'><thead><tr><th>Strategy</th><th>Cooperation Rate</th><th>Total Actions</th></tr></thead><tbody></tbody></table>
+
+<h2>Pareto Efficiency (Prisoner's Dilemma)</h2>
+<table class='tbl'><thead><tr><th>Matchup</th><th>Avg Pareto</th><th>Samples</th></tr></thead><tbody></tbody></table>
+
+<h2>Raw Sessions</h2>
+<table class='tbl'><thead><tr><th>Session</th><th>Game</th><th>Strategy A</th><th>Strategy B</th><th>Winner</th><th>Turns</th><th>Forfeit</th></tr></thead><tbody><tr><td>sess_57affc6156</td><td>tictactoe</td><td>direct</td><td>direct</td><td>player_a</td><td>9</td><td></td></tr></tbody></table>
+</body></html>
